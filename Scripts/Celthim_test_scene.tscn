@@ -1,3 +1,60 @@
-[gd_scene format=3 uid="uid://cc7cjctc0uefb"]
+[gd_scene load_steps=8 format=3 uid="uid://cc7cjctc0uefb"]
+
+[ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="2_fxd64"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ecq1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bijub"]
+albedo_color = Color(0.129412, 0.309804, 0.0313726, 1)
+normal_scale = 3.16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tjnf1"]
+size = Vector3(200, 1, 200)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e834o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy0pr"]
+albedo_color = Color(0.84375, 0.493355, 0.0428467, 1)
+
+[sub_resource type="Environment" id="Environment_60mxs"]
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 1
+tonemap_exposure = 3.22
+tonemap_white = 3.85
+ssao_enabled = true
+glow_enabled = true
+fog_light_color = Color(0.372549, 0.403922, 0.45098, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0079
+adjustment_enabled = true
+adjustment_brightness = 1.34
 
 [node name="Celthim_test_scene" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_fxd64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.726, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 78.2522, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(-111.623, 0, 0, 0, 1, 0, 0, 0, -82.8989, 0, -0.22661, 0)
+mesh = SubResource("BoxMesh_6ecq1")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_bijub")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22661, 0)
+shape = SubResource("BoxShape3D_tjnf1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(7.98816, 0, 0, 0, 7.98816, 0, 0, 0, 7.98816, 0, 0, 0)
+mesh = SubResource("BoxMesh_e834o")
+surface_material_override/0 = SubResource("StandardMaterial3D_fy0pr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_60mxs")
+
+[editable path="Player"]
