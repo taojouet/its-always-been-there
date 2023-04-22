@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsle41ecjhi7h"]
+
+[ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
+[ext_resource type="PackedScene" uid="uid://8rohb5mrcotc" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
+[ext_resource type="PackedScene" uid="uid://7dauakcmvpw3" path="res://Assets/Slenderman/Idle.gltf" id="3_o1hj8"]
+[ext_resource type="Script" path="res://Assets/Slenderman/Idle.gd" id="4_hlylb"]
+
+[node name="Runner" type="Node3D"]
+script = ExtResource("1_0t6m7")
+
+[node name="Plateform" parent="." instance=ExtResource("2_k7ad4")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 1.77636e-15, -8.74228e-08, -3.15488e-08, 0.932614, 0.360876, 8.15317e-08, 0.360876, -0.932614, 0, 5.79542, -6.67992)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065, 0, 3, 0)
+
+[node name="Idle" parent="." instance=ExtResource("3_o1hj8")]
+transform = Transform3D(-0.000986378, 0, 0.000164497, 0, 0.001, 0, -0.000164497, 0, -0.000986378, -0.0127244, 3.70112, 3.60302)
+script = ExtResource("4_hlylb")
