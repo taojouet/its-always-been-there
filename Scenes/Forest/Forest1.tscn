@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://drkv6fbvrymjn"]
+[gd_scene load_steps=10 format=3 uid="uid://drkv6fbvrymjn"]
 
 [ext_resource type="ArrayMesh" uid="uid://sk44q2rddta4" path="res://Assets/forest.01/0/floor.obj" id="1_u20vx"]
 [ext_resource type="Shader" path="res://Assets/forest.01/Runner.gdshader" id="2_bmbuf"]
+[ext_resource type="ArrayMesh" uid="uid://dwy0qg3x3upsx" path="res://Assets/forest.01/0/grass.obj" id="3_n1dng"]
 [ext_resource type="ArrayMesh" uid="uid://bfqdcsj6ev065" path="res://Assets/forest.01/0/rocks.obj" id="4_67am3"]
 [ext_resource type="ArrayMesh" uid="uid://cv8i5nsd5d750" path="res://Assets/forest.01/0/trees_a.obj" id="5_v7j8g"]
 [ext_resource type="ArrayMesh" uid="uid://cihpmk04ig8du" path="res://Assets/forest.01/0/trees_b.obj" id="6_ol6lv"]
@@ -17,6 +18,11 @@ data = PackedVector3Array(-0.6566, 0.3099, -0.4505, -0.6542, 0.3099, -0.5055, -0
 [node name="Floor2" type="MeshInstance3D"]
 transform = Transform3D(-4.37114e-07, 0, 10, 0, 10, 0, -10, 0, -4.37114e-07, -0.391369, 0.00927258, 5.66854)
 mesh = ExtResource("1_u20vx")
+surface_material_override/0 = SubResource("ShaderMaterial_i4chp")
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_n1dng")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_i4chp")
 
 [node name="Rocks" type="MeshInstance3D" parent="."]
