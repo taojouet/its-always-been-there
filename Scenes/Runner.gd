@@ -17,10 +17,18 @@ func _ready():
 	for i in range(NUM_PLATFORMS):
 		var p = plateform_path.instantiate()
 		add_child(p)
+		p.getPlayerdetection().connect("body_entered", movePlateform)
 		plateforms.append(p)
 		p.translate(Vector3(0, 0, i))
+		if i == round(NUM_PLATFORMS/2):
+			$Player.global_position.x=p.global_position.x
+			$Player.global_position.z=p.global_position.z
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func movePlateform(body):
+	print("COLLIDE")
+	plateforms[0].translate( Vector3(0,0,len(plateforms) ) )
+	plateforms.append(plateforms.pop_front())
