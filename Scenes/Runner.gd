@@ -5,7 +5,7 @@ const PLATEFORM_SCALE = 5
 
 @onready var plateform = $Plateform
 const plateform_path = preload("res://Scripts/Plateform.tscn")
-const NUM_PLATFORMS = 7
+const NUM_PLATFORMS = 2
 var plateforms = []
 
 		
@@ -16,7 +16,8 @@ func _ready():
 		var p = plateform_path.instantiate()
 		add_child(p)
 		p.scale *= PLATEFORM_SCALE
-		p.connect("trigger", movePlateform)
+#		p.getPlayerdetection().connect("body_entered", movePlateform)
+		p.connect("player_entered",movePlateform)
 		plateforms.append(p)
 		p.translate(Vector3(0, 0, i*TILE_SIZE))
 		if i == round(NUM_PLATFORMS/2):
@@ -31,9 +32,14 @@ func _ready():
 func _process(delta):
 	pass
 
-func movePlateform(body):
-	if body is Player:
-		print("TRIGGER")
-		plateforms[0].translate( Vector3(0,0,len(plateforms)*TILE_SIZE ) )
-		plateforms[0].rand_forest()
-		plateforms.append(plateforms.pop_front())
+func movePlateform():
+	plateforms[0].translate( Vector3(0,0,len(plateforms)*TILE_SIZE ) )
+	plateforms[0].rand_forest()
+	plateforms.append(plateforms.pop_front())
+
+#func movePlateform(body):
+#	return
+#	if body is Player:
+#		plateforms[0].translate( Vector3(0,0,len(plateforms)*TILE_SIZE ) )
+#		plateforms[0].rand_forest()
+#		plateforms.append(plateforms.pop_front())

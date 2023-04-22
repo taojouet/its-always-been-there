@@ -1,6 +1,6 @@
 extends Node3D
 
-signal trigger
+signal player_entered
 
 const forests = [
 	preload("res://Scenes/Forest/Forest1.tscn"),
@@ -34,8 +34,7 @@ func getPlayerdetection():
 
 
 func _on_playerdetection_body_entered(body):
-	if can_trigger:
+	if body is Player and can_trigger:
 		can_trigger = false
-		emit_signal("trigger")
-		print("TRIGGER")
+		emit_signal("player_entered")
 	pass # Replace with function body.
