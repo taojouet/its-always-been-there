@@ -1,0 +1,64 @@
+# Blender MTL File: 'None'
+# Material Count: 6
+
+newmtl Material.001
+Ns 249.019608
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\\The_Life\\GameDev\\home\\app\\mixamo-mini\\tmp\\skins_774d14ea-189a-4c0a-af6b-0f551dab590c.fbm\\SlenderManBaseColor2.png
+
+newmtl Material.002
+Ns 249.019608
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\\The_Life\\GameDev\\home\\app\\mixamo-mini\\tmp\\skins_774d14ea-189a-4c0a-af6b-0f551dab590c.fbm\\SlenderManBasecolor.png
+
+newmtl Material.003
+Ns 249.019608
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\\The_Life\\GameDev\\home\\app\\mixamo-mini\\tmp\\skins_774d14ea-189a-4c0a-af6b-0f551dab590c.fbm\\SlenderManBasecolorTie.png
+
+newmtl Material.004
+Ns 249.019608
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\\The_Life\\GameDev\\home\\app\\mixamo-mini\\tmp\\skins_774d14ea-189a-4c0a-af6b-0f551dab590c.fbm\\SlenderManBasecolorShoes.png
+
+newmtl Material.005
+Ns 249.019608
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.400000 0.400000 0.400000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
