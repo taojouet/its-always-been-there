@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsle41ecjhi7h"]
+[gd_scene load_steps=5 format=3 uid="uid://dsle41ecjhi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
 [ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
 [ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="3_5vtox"]
+
+[sub_resource type="Environment" id="Environment_3hpyp"]
+fog_enabled = true
+volumetric_fog_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 0.5
 
 [node name="Runner" type="Node3D"]
 script = ExtResource("1_0t6m7")
@@ -10,9 +16,10 @@ script = ExtResource("1_0t6m7")
 [node name="Plateform" parent="." instance=ExtResource("2_k7ad4")]
 
 [node name="Player" parent="." instance=ExtResource("3_5vtox")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.15256e-07, 0.370475, -0.179843)
-collision_layer = 7
-collision_mask = 7
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.405408, 0.370475, -0.179843)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065, 0, 3, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3hpyp")

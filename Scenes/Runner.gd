@@ -19,7 +19,7 @@ func _ready():
 		add_child(p)
 		p.getPlayerdetection().connect("body_entered", movePlateform)
 		plateforms.append(p)
-		p.translate(Vector3(0, 0, i))
+		p.translate(Vector3(0, 0, i*12))
 		if i == round(NUM_PLATFORMS/2):
 			$Player.global_position.x=p.global_position.x
 			$Player.global_position.z=p.global_position.z
@@ -29,6 +29,6 @@ func _process(delta):
 	pass
 
 func movePlateform(body):
-	print("COLLIDE")
-	plateforms[0].translate( Vector3(0,0,len(plateforms) ) )
-	plateforms.append(plateforms.pop_front())
+	if body is Player:
+		plateforms[0].translate( Vector3(0,0,len(plateforms) ) )
+		plateforms.append(plateforms.pop_front())
