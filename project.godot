@@ -43,6 +43,12 @@ Right={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Floor"
+3d_physics/layer_2="Walls-L"
+3d_physics/layer_3="Walls-R"
+
 [rendering]
 
 anti_aliasing/quality/msaa_3d=1
