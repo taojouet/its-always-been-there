@@ -1,16 +1,16 @@
 extends CharacterBody3D
 class_name Player
 
-const SPEED = 5.0
+@export var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 # cam look
 var minLookAngle : float = -90.0
 var maxLookAngle : float = 90.0
-var lookSensitivity : float = 0.8
+var lookSensitivity : float = 30
 
 
-@onready var camera = $Camera3D
+@onready var camera = $Neck/Camera3D
 @onready var camera_rotation = camera.rotation_degrees
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -27,27 +27,37 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouseDelta = event.relative
 		
-		# rotate the camera along the x axis
-		camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity# * delta
-		
-		# clamp camera x rotation axis
-		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
-		
-		# rotate the player along their y-axis
-		rotation_degrees.y -= mouseDelta.x * lookSensitivity#* delta
-		
-		# reset the mouseDelta vector
-		mouseDelta = Vector2.ZERO
+#		# rotate the camera along the x axis
+#		camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity# * delta
+#
+#		# clamp camera x rotation axis
+#		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
+#
+#		# rotate the player along their y-axis
+#		rotation_degrees.y -= mouseDelta.x * lookSensitivity#* delta
+#
+#		# reset the mouseDelta vector
+#		mouseDelta = Vector2.ZERO
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _process(delta):
 	pass
+	# rotate the camera along the x axis
+	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
+	
+	# clamp camera x rotation axis
+	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
+	
+	# rotate the player along their y-axis
+	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
+	
+	# reset the mouseDelta vector
+	mouseDelta = Vector2.ZERO
   
 
 func _physics_process(delta):
-	
 	
 	
 	
