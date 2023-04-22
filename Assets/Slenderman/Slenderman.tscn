@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://wkgrl6cxx6i4"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://Assets/Slenderman/Slenderman.gd" id="1_66ttb"]
-[ext_resource type="PackedScene" uid="uid://3hua22fwp12t" path="res://Assets/Slenderman/drink.tscn" id="1_xtse4"]
+[ext_resource type="PackedScene" path="res://Assets/Slenderman/drink.tscn" id="1_xtse4"]
 [ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="2_rn6b7"]
-[ext_resource type="PackedScene" uid="uid://b6gq2x4bny44h" path="res://Assets/Slenderman/run.tscn" id="3_80hyt"]
+[ext_resource type="PackedScene" path="res://Assets/Slenderman/run.tscn" id="3_80hyt"]
 
 [node name="Slenderman" type="Node3D"]
 script = ExtResource("1_66ttb")

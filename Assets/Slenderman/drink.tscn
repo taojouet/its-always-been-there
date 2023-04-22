@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://3hua22fwp12t"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="PackedScene" uid="uid://prps0c6l6oxd" path="res://Assets/Slenderman/Drink/Sitting Drinking.fbx" id="1_3nwxq"]
 [ext_resource type="Script" path="res://Assets/Slenderman/drink.gd" id="2_do8te"]

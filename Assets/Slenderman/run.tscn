@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6gq2x4bny44h"]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="PackedScene" uid="uid://cbnjflotumtu4" path="res://Assets/Slenderman/Run/Slow Run.fbx" id="1_afu4v"]
 [ext_resource type="Script" path="res://Run.gd" id="2_3llek"]
