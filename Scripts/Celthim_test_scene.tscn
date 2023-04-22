@@ -82,4 +82,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.83602, 1, -20.041)
 
 [node name="Slenderman" parent="." instance=ExtResource("6_vorur")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8684, 1, -14.5654)
-anim = null

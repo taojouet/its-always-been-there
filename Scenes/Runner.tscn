@@ -8,7 +8,9 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_eohv3"]
 
 [sub_resource type="Environment" id="Environment_3hpyp"]
+tonemap_exposure = 1.67
 fog_enabled = true
+fog_light_energy = 2.18
 volumetric_fog_enabled = true
 volumetric_fog_sky_affect = 0.684
 adjustment_enabled = true
@@ -22,7 +24,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 142.226, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("3_5vtox")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 142.29, 2.86194, 14.096)
-SPEED = 15.0
+SPEED = 12.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991695, 0)

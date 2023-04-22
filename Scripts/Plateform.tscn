@@ -7,7 +7,7 @@
 size = Vector3(5.2, 0.229, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ho11"]
-size = Vector3(5.022, 0.229, 5.23128)
+size = Vector3(5.022, 1, 5.231)
 
 [node name="Plateform" type="Node3D"]
 script = ExtResource("1_iunwr")
@@ -24,10 +24,13 @@ shape = SubResource("BoxShape3D_d6cqv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202659, 0)
 
 [node name="Playercollision" type="CollisionShape3D" parent="Playerdetection"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.817921, 5.60916)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396167, 10.3228)
 shape = SubResource("BoxShape3D_4ho11")
 
-[node name="Forest1" parent="." instance=ExtResource("2_6aj7q")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.391369, 0.00927258, 0.399544)
+[node name="ForestHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391369, 0.00927258, 0.399544)
+
+[node name="Forest1" parent="ForestHolder" instance=ExtResource("2_6aj7q")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.391369, -0.00927258, -0.399544)
 
 [connection signal="body_entered" from="Playerdetection" to="." method="_on_playerdetection_body_entered"]

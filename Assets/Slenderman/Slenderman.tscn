@@ -15,6 +15,3 @@ visible = false
 
 [node name="Run" parent="." instance=ExtResource("3_80hyt")]
 visible = false
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60764, 0)
