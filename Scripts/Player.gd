@@ -1,13 +1,17 @@
 extends CharacterBody3D
+class_name Player
 
-
-const SPEED = 5.0
+@export var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 # cam look
 var minLookAngle : float = -90.0
 var maxLookAngle : float = 90.0
-var lookSensitivity : float = 30.0
+var lookSensitivity : float = 30
+
+
+@onready var camera = $Neck/Camera3D
+@onready var camera_rotation = camera.rotation_degrees
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -16,7 +20,6 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
 
-@onready var camera = $Camera3D
 
 var mouseDelta
 
@@ -24,26 +27,40 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouseDelta = event.relative
 		
+#		# rotate the camera along the x axis
+#		camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity# * delta
+#
+#		# clamp camera x rotation axis
+#		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
+#
+#		# rotate the player along their y-axis
+#		rotation_degrees.y -= mouseDelta.x * lookSensitivity#* delta
+#
+#		# reset the mouseDelta vector
+#		mouseDelta = Vector2.ZERO
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _process(delta):
-  
-  # rotate the camera along the x axis
+	pass
+	# rotate the camera along the x axis
 	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
-  
-  # clamp camera x rotation axis
+	
+	# clamp camera x rotation axis
 	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
-  
-  # rotate the player along their y-axis
+	
+	# rotate the player along their y-axis
 	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
-  
-  # reset the mouseDelta vector
-	mouseDelta = Vector2()
+	
+	# reset the mouseDelta vector
+	mouseDelta = Vector2.ZERO
   
 
 func _physics_process(delta):
+	
+	
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta

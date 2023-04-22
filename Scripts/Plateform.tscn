@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1u6dgs77r762"]
+
+[ext_resource type="Script" path="res://Scripts/Plateform.gd" id="1_iunwr"]
+[ext_resource type="PackedScene" uid="uid://drkv6fbvrymjn" path="res://Scenes/Forest/Forest1.tscn" id="2_6aj7q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d6cqv"]
+size = Vector3(5.2, 0.229, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ho11"]
+size = Vector3(5.022, 1, 5.231)
+
+[node name="Plateform" type="Node3D"]
+script = ExtResource("1_iunwr")
+
+[node name="Floorbody" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floorbody"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 10.7317)
+shape = SubResource("BoxShape3D_d6cqv")
+
+[node name="Playerdetection" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202659, 0)
+
+[node name="Playercollision" type="CollisionShape3D" parent="Playerdetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396167, 10.3228)
+shape = SubResource("BoxShape3D_4ho11")
+
+[node name="ForestHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391369, 0.00927258, 0.399544)
+
+[node name="Forest1" parent="ForestHolder" instance=ExtResource("2_6aj7q")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.391369, -0.00927258, -0.399544)
+
+[connection signal="body_entered" from="Playerdetection" to="." method="_on_playerdetection_body_entered"]

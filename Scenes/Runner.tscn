@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsle41ecjhi7h"]
+
+[ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
+[ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
+[ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="3_5vtox"]
+[ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="4_uiclm"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eohv3"]
+
+[sub_resource type="Environment" id="Environment_3hpyp"]
+tonemap_exposure = 1.67
+fog_enabled = true
+fog_light_energy = 2.18
+volumetric_fog_enabled = true
+volumetric_fog_sky_affect = 0.684
+adjustment_enabled = true
+adjustment_saturation = 0.5
+
+[node name="Runner" type="Node3D"]
+script = ExtResource("1_0t6m7")
+
+[node name="Plateform" parent="." instance=ExtResource("2_k7ad4")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 142.226, 0, 0)
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("3_5vtox")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 142.29, 6, 14.096)
+SPEED = 12.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991695, 0)
+mesh = SubResource("CapsuleMesh_eohv3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065, 0, 3, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3hpyp")
+
+[node name="Slenderman" parent="." instance=ExtResource("4_uiclm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.409, 3, 2.042)
