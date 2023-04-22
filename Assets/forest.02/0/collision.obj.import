@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5b2hmspiq3n7"
+path="res://.godot/imported/collision.obj-b4278e1c0d2359703f177e50347aaedc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/collision.obj-b4278e1c0d2359703f177e50347aaedc.mesh"]
+
+source_file="res://Assets/forest.02/0/collision.obj"
+dest_files=["res://.godot/imported/collision.obj-b4278e1c0d2359703f177e50347aaedc.mesh", "res://.godot/imported/collision.obj-b4278e1c0d2359703f177e50347aaedc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
