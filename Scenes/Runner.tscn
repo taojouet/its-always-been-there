@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsle41ecjhi7h"]
+[gd_scene load_steps=5 format=3 uid="uid://dsle41ecjhi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
-[ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
+[ext_resource type="PackedScene" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
 [ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="3_5vtox"]
-[ext_resource type="PackedScene" path="res://Assets/Slenderman/Slenderman.tscn" id="4_4kkl7"]
 
 [sub_resource type="Environment" id="Environment_3hpyp"]
 fog_enabled = true
@@ -24,7 +23,3 @@ transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3hpyp")
-
-[node name="Slenderman" parent="." instance=ExtResource("4_4kkl7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.717886, 8.18675, -0.570173)
-visible = false
