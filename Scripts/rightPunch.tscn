@@ -1,0 +1,40 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpbugtg1m2evh"]
+
+[ext_resource type="Script" path="res://Scripts/enemyTuc.gd" id="1_t5ff7"]
+[ext_resource type="ArrayMesh" uid="uid://cw7ajrjp1dfl7" path="res://Assets/Tuc/bandana.obj" id="2_pfpth"]
+[ext_resource type="Shader" path="res://Assets/Tuc/bandanaShader.gdshader" id="3_35xwy"]
+[ext_resource type="ArrayMesh" uid="uid://ccfyyiachxmwy" path="res://Assets/Tuc/coquille.obj" id="3_a1qji"]
+[ext_resource type="Shader" path="res://Assets/Tuc/coquilleShader.gdshader" id="4_5r1oj"]
+[ext_resource type="ArrayMesh" uid="uid://cls5a2kt5gvs7" path="res://Assets/Tuc/tuc.obj" id="4_tpgt0"]
+[ext_resource type="Shader" path="res://Assets/Tuc/tucShader.gdshader" id="5_4yfnd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gsak4"]
+render_priority = 0
+shader = ExtResource("3_35xwy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4heeb"]
+render_priority = 0
+shader = ExtResource("4_5r1oj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_01kyg"]
+render_priority = 0
+shader = ExtResource("5_4yfnd")
+
+[node name="enemyTuc" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.510541, 0)
+script = ExtResource("1_t5ff7")
+
+[node name="Bandana" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326633, 0, -0.0841823)
+mesh = ExtResource("2_pfpth")
+surface_material_override/0 = SubResource("ShaderMaterial_gsak4")
+
+[node name="Coquille" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326633, 0, -0.0841823)
+mesh = ExtResource("3_a1qji")
+surface_material_override/0 = SubResource("ShaderMaterial_4heeb")
+
+[node name="Tuc" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326633, 0, -0.0841823)
+mesh = ExtResource("4_tpgt0")
+surface_material_override/0 = SubResource("ShaderMaterial_01kyg")
