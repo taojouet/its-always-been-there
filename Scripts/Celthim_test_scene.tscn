@@ -1,7 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cc7cjctc0uefb"]
+[gd_scene load_steps=14 format=3 uid="uid://cc7cjctc0uefb"]
 
 [ext_resource type="Script" path="res://Scripts/Celthim_test_scene.gd" id="1_akpa3"]
+[ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="2_254o5"]
 [ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="2_fxd64"]
+[ext_resource type="PackedScene" uid="uid://3hua22fwp12t" path="res://Assets/Slenderman/drink.tscn" id="4_uldqw"]
+[ext_resource type="PackedScene" uid="uid://b6gq2x4bny44h" path="res://Assets/Slenderman/run.tscn" id="5_2up85"]
+[ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="6_vorur"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ecq1"]
 size = Vector3(200, 1, 200)
@@ -17,6 +21,9 @@ size = Vector3(200, 2, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy0pr"]
 albedo_color = Color(0.84375, 0.493355, 0.0428467, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3xvfx"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="Environment" id="Environment_60mxs"]
 ambient_light_color = Color(1, 1, 1, 1)
@@ -56,5 +63,23 @@ transform = Transform3D(7.98816, 0, 0, 0, 7.98816, 0, 0, 0, 7.98816, 0, 2.98947,
 mesh = SubResource("BoxMesh_e834o")
 surface_material_override/0 = SubResource("StandardMaterial3D_fy0pr")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_3xvfx")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_60mxs")
+
+[node name="Idle" parent="." instance=ExtResource("2_254o5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.97651, 1, -18.0223)
+
+[node name="Drink" parent="." instance=ExtResource("4_uldqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47297, 1, -19.1129)
+
+[node name="Run" parent="." instance=ExtResource("5_2up85")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.83602, 1, -20.041)
+
+[node name="Slenderman" parent="." instance=ExtResource("6_vorur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8684, 1, -14.5654)
+anim = null
