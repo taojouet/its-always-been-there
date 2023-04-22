@@ -25,12 +25,12 @@ mesh = ExtResource("3_uxdaq")
 surface_material_override/0 = ExtResource("2_meytp")
 
 [node name="Rocks" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.012673, 0.00927258, 0.992719)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.012673, -0.00998811, 0.992719)
 mesh = ExtResource("4_haw0y")
 surface_material_override/0 = ExtResource("2_meytp")
 
 [node name="TreesA" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.012673, 0.00927258, 0.992719)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.012673, -0.0390553, 0.992719)
 mesh = ExtResource("5_tl5ew")
 surface_material_override/0 = ExtResource("2_meytp")
 
