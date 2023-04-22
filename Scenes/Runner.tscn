@@ -21,9 +21,10 @@ script = ExtResource("1_0t6m7")
 
 [node name="Plateform" parent="." instance=ExtResource("2_k7ad4")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 142.226, 0, 0)
+visible = false
 
 [node name="Player" parent="." instance=ExtResource("3_5vtox")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 142.29, 2.86194, 14.096)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 142.29, 6, 14.096)
 SPEED = 12.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
