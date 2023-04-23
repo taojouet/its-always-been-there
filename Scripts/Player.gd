@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Player
 
 @export var SPEED = 5.0
+@export var is_lock_Y := false
 const JUMP_VELOCITY = 4.5
 
 # cam look
@@ -36,12 +37,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		$Punch/punchAnim.play("rightPunch")
 
 func _process(delta):
-	pass
-	# rotate the camera along the x axis
-	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
-	
-	# clamp camera x rotation axis
-	camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
+	if !is_lock_Y: 
+		# rotate the camera along the x axis
+		camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
+		# clamp camera x rotation axis
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
 	
 	# rotate the player along their y-axis
 	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta

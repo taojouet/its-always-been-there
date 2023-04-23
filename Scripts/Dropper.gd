@@ -15,7 +15,7 @@ func restart_dropper():
 	
 	$Mobs_Holder.destroy_tucs()
 	$Player.velocity = Vector3.ZERO
-	$Player/Neck/Camera3D.global_rotation_degrees = Vector3(-90,0,0)
+#	$Player/Neck/Camera3D.global_rotation_degrees = Vector3(-90,0,0)
 	await create_tween().tween_property($Player,"global_position",base_player_pos,1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).finished
 	$Mobs_Holder.restart_dropper()
 #	await get_tree().create_timer(0.25).timeout
