@@ -27,7 +27,7 @@ func _ready():
 
 var is_punching = false
 
-var mouseDelta
+var mouseDelta = Vector2.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

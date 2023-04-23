@@ -3,10 +3,15 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("mixamocom")
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func activate(active):
+	# visible = active
+	print("Active", active)
+	if active: 
+		$AnimationPlayer2.play("Dissolve_in")
+		await  $AnimationPlayer2.animation_finished
+		$AnimationPlayer.play("mixamocom")
+	else:
+		$AnimationPlayer.stop()

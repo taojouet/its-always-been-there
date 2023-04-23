@@ -58,6 +58,10 @@ RIGHT_CLICK={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Floor"
+
 [rendering]
 
 anti_aliasing/quality/msaa_3d=1
