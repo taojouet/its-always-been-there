@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1pyohuyovvff"]
+
+[ext_resource type="Script" path="res://Scripts/Mobs/Mob.gd" id="1_v7n83"]
+[ext_resource type="ArrayMesh" uid="uid://x1b3msnguyhh" path="res://tuc.obj" id="2_15227"]
+[ext_resource type="Shader" path="res://Scripts/Tuc.gdshader" id="3_h3vqm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miicd"]
+render_priority = 0
+shader = ExtResource("3_h3vqm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kyh0"]
+size = Vector3(1.31311, 0.0925853, 0.958218)
+
+[node name="Mob" type="Area3D"]
+script = ExtResource("1_v7n83")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Tuc" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_15227")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_miicd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17, 0, 0)
+shape = SubResource("BoxShape3D_3kyh0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
