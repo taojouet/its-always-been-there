@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci16yewx32o2a"]
+[gd_scene load_steps=7 format=3 uid="uid://ci16yewx32o2a"]
 
 [ext_resource type="Script" path="res://Scripts/Plateform_end.gd" id="1_mlaxv"]
 [ext_resource type="PackedScene" uid="uid://drkv6fbvrymjn" path="res://Scenes/Forest/Forest1.tscn" id="2_dp31m"]
@@ -9,6 +9,9 @@ size = Vector3(5.2, 0.229, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ho11"]
 size = Vector3(5.022, 1, 5.231)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jug0o"]
+size = Vector3(5, 2, 2)
 
 [node name="Plateform_end" type="Node3D"]
 script = ExtResource("1_mlaxv")
@@ -38,4 +41,13 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0.391369, -0.00927258, -0.
 [node name="Drink" parent="." instance=ExtResource("3_kptmc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.279092, 16.2099)
 
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.2155)
+shape = SubResource("BoxShape3D_jug0o")
+
 [connection signal="body_entered" from="Playerdetection" to="." method="_on_playerdetection_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

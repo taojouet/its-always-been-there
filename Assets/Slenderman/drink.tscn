@@ -23,7 +23,7 @@ shader_parameter/noise = SubResource("NoiseTexture2D_truum")
 
 [sub_resource type="Animation" id="Animation_h7lvh"]
 resource_name = "Dissolve_in"
-length = 10.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -31,8 +31,8 @@ tracks/0/path = NodePath("../4_Object06_01_16_16:surface_material_override/0:sha
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(0.353554, 1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1.6818, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
@@ -43,8 +43,8 @@ tracks/1/path = NodePath(".:surface_material_override/0:shader_parameter/bias")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1.56917, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
@@ -165,7 +165,7 @@ surface_material_override/0 = ExtResource("3_vfgnl")
 surface_material_override/0 = ExtResource("3_vfgnl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="RootNode/Skeleton3D" index="7"]
-transform = Transform3D(0.139166, -0.620131, -0.772056, 0.927033, 0.355723, -0.118624, 0.348201, -0.699212, 0.624386, -0.505617, 1.96729, 5.56176)
+transform = Transform3D(0.139165, -0.620131, -0.772056, 0.927033, 0.355723, -0.118624, 0.3482, -0.699213, 0.624386, -0.505615, 1.96729, 5.56176)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 

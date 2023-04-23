@@ -7,10 +7,11 @@ func _ready():
 
 
 func activate(active):
-	visible = active
-	if active:
+	# visible = active
+	print("Active", active)
+	if active: 
+		$AnimationPlayer2.play("Dissolve_in")
+		await  $AnimationPlayer2.animation_finished
 		$AnimationPlayer.play("mixamocom")
-		await $AnimationPlayer.animation_finished("mixamocom")
-		$AnimationPlayer.stop()
 	else:
 		$AnimationPlayer.stop()
