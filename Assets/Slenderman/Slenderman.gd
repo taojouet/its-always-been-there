@@ -3,7 +3,7 @@ class_name Slenderman
 
 signal slenderman_catch
 
-var speed = 6.0
+var speed = 7
 
 enum {
 	IDLE,
@@ -45,5 +45,5 @@ func play(anim):
 func _on_area_3d_body_entered(body):
 	if body is Player and is_active:
 		emit_signal("slenderman_catch")
-		print("CATCH")
+#		print("player_entered")
 	pass # Replace with function body.

@@ -1,31 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxli7eeeprq50"]
+[gd_scene load_steps=10 format=3 uid="uid://bxli7eeeprq50"]
 
 [ext_resource type="PackedScene" uid="uid://c2jff0vbfg7xs" path="res://Assets/Slenderman/Idle.fbx" id="1_4w1wr"]
 [ext_resource type="Script" path="res://Assets/Slenderman/idle.gd" id="2_dyjiy"]
 [ext_resource type="Shader" path="res://Assets/Slenderman/dissolve.gdshader" id="3_iajhu"]
-[ext_resource type="Texture2D" uid="uid://wcu7croq2nn4" path="res://Assets/Slenderman/Idle-df39ac72d9b76d21da7926f672e253b1_SlenderManBaseColor2.png" id="4_h0lpf"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_oyrgw"]
-seed = 5
-frequency = 0.001
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qf8hr"]
-width = 2048
-height = 2048
-noise = SubResource("FastNoiseLite_oyrgw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjqvf"]
 render_priority = 0
 shader = ExtResource("3_iajhu")
-shader_parameter/bias = 1.0
-shader_parameter/noise = SubResource("NoiseTexture2D_qf8hr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_luii3"]
 render_priority = 0
 shader = ExtResource("3_iajhu")
-shader_parameter/bias = 1.0
-shader_parameter/noise = SubResource("NoiseTexture2D_qf8hr")
-shader_parameter/albedo_texture = ExtResource("4_h0lpf")
 
 [sub_resource type="Animation" id="Animation_f3js6"]
 length = 0.001
@@ -54,34 +39,6 @@ tracks/1/keys = {
 "values": [1.0]
 }
 
-[sub_resource type="Animation" id="Animation_t6e77"]
-resource_name = "dissolve_out"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RootNode/Skeleton3D/4_Object06_01_16_16:surface_material_override/0:shader_parameter/bias")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.466516, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RootNode/Skeleton3D/Plane:surface_material_override/0:shader_parameter/bias")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(0.420448, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_hhcce"]
 resource_name = "dissolve_in"
 length = 2.0
@@ -108,6 +65,34 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.353553, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_t6e77"]
+resource_name = "dissolve_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootNode/Skeleton3D/4_Object06_01_16_16:surface_material_override/0:shader_parameter/bias")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.466516, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RootNode/Skeleton3D/Plane:surface_material_override/0:shader_parameter/bias")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.420448, 1),
+"update": 0,
+"values": [1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4i2w0"]
