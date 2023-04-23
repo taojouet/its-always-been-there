@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc7cjctc0uefb"]
+[gd_scene load_steps=15 format=3 uid="uid://cc7cjctc0uefb"]
 
 [ext_resource type="Script" path="res://Scripts/Celthim_test_scene.gd" id="1_akpa3"]
 [ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="2_254o5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3hua22fwp12t" path="res://Assets/Slenderman/drink.tscn" id="4_uldqw"]
 [ext_resource type="PackedScene" uid="uid://b6gq2x4bny44h" path="res://Assets/Slenderman/run.tscn" id="5_2up85"]
 [ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="6_vorur"]
+[ext_resource type="PackedScene" uid="uid://b0pobjrb84lq5" path="res://Assets/Glass/Glass.tscn" id="7_snjmi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_6ecq1"]
 size = Vector3(200, 1, 200)
@@ -82,3 +83,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.83602, 1, -20.041)
 
 [node name="Slenderman" parent="." instance=ExtResource("6_vorur")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8684, 1, -14.5654)
+
+[node name="GlassStl" parent="." instance=ExtResource("7_snjmi")]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, -17.9542, 1, 7.20028)
