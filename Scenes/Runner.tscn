@@ -1,12 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsle41ecjhi7h"]
+[gd_scene load_steps=17 format=3 uid="uid://dsle41ecjhi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
 [ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
 [ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="3_5vtox"]
+[ext_resource type="PackedScene" uid="uid://bltirlau7kf5" path="res://Scenes/Home/HomeLighting.tscn" id="3_wv24i"]
 [ext_resource type="Texture2D" uid="uid://qodcn2yftins" path="res://Assets/Sky/animestyled_hdr_night.hdr" id="4_8jgn2"]
 [ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="4_uiclm"]
+[ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="7_pxcrx"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_75dwx"]
+[sub_resource type="BoxMesh" id="BoxMesh_0wa52"]
+size = Vector3(14, 1, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_afo28"]
+data = PackedVector3Array(-7, 0.5, 1, 7, 0.5, 1, -7, -0.5, 1, 7, 0.5, 1, 7, -0.5, 1, -7, -0.5, 1, 7, 0.5, -1, -7, 0.5, -1, 7, -0.5, -1, -7, 0.5, -1, -7, -0.5, -1, 7, -0.5, -1, 7, 0.5, 1, 7, 0.5, -1, 7, -0.5, 1, 7, 0.5, -1, 7, -0.5, -1, 7, -0.5, 1, -7, 0.5, -1, -7, 0.5, 1, -7, -0.5, -1, -7, 0.5, 1, -7, -0.5, 1, -7, -0.5, -1, 7, 0.5, 1, -7, 0.5, 1, 7, 0.5, -1, -7, 0.5, 1, -7, 0.5, -1, 7, 0.5, -1, -7, -0.5, 1, 7, -0.5, 1, -7, -0.5, -1, 7, -0.5, 1, 7, -0.5, -1, -7, -0.5, -1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tg6ve"]
+size = Vector3(5.16125, 1, 2.21682)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j81vc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_eohv3"]
 
@@ -33,20 +44,42 @@ size = Vector3(20, 5, 1)
 script = ExtResource("1_0t6m7")
 
 [node name="Plateform" parent="." instance=ExtResource("2_k7ad4")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -99.3492)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -97.3056)
+do_rand = false
+
+[node name="HomeStart" parent="Plateform" instance=ExtResource("3_wv24i")]
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, -0.235743, 0.181043, -1.65837)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plateform/HomeStart"]
+transform = Transform3D(1, 0, 0, 0, 0.999675, 0.0254965, 0, -0.0254965, 0.999675, 0.675053, -0.357323, 5.04491)
+visible = false
+mesh = SubResource("BoxMesh_0wa52")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plateform/HomeStart/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plateform/HomeStart/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_afo28")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plateform/HomeStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54663, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plateform/HomeStart/StaticBody3D"]
+shape = SubResource("BoxShape3D_tg6ve")
+
+[node name="Idle" parent="Plateform/HomeStart" instance=ExtResource("7_pxcrx")]
+transform = Transform3D(-0.790753, 0, -0.121285, 0, 0.8, 0, 0.121285, 0, -0.790753, -2.83284, 0.132606, 2.58531)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Plateform"]
-transform = Transform3D(8.96909, 0, 0, 0, 6.69181, 0, 0, 0, 4.47564, 0, 0, -1.36694)
-mesh = SubResource("BoxMesh_75dwx")
+transform = Transform3D(4.12767, 0, 0, 0, 0.288307, 0.00176805, 0, -0.58646, 0.000869183, -0.237183, 1.70495, -0.455093)
+mesh = SubResource("BoxMesh_j81vc")
 
 [node name="Player" parent="." instance=ExtResource("3_5vtox")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.524857, 1.95218, -92.6632)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.44481, 3.36926, -105.79)
 collision_layer = 5
 collision_mask = 5
 SPEED = 15.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991695, 0)
 mesh = SubResource("CapsuleMesh_eohv3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -56,7 +89,7 @@ transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065
 environment = SubResource("Environment_3hpyp")
 
 [node name="Slenderman" parent="." instance=ExtResource("4_uiclm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.525, 1.5, -99.278)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.525, 1.5, -99.9344)
 
 [node name="ActivateSlenderman" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18271, 0)

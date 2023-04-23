@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bltirlau7kf5"]
+[gd_scene load_steps=2 format=3 uid="uid://bltirlau7kf5"]
 
 [ext_resource type="PackedScene" uid="uid://c7ms0p2ey3w58" path="res://Scenes/Home/Home.tscn" id="1_yya5s"]
-
-[sub_resource type="Environment" id="Environment_728bq"]
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
-adjustment_enabled = true
-adjustment_saturation = 0.5
 
 [node name="HomeStart" type="Node3D"]
 
@@ -18,9 +12,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.7
 light_energy = 10.0
 spot_range = 9.395
 spot_angle = 71.6585
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_728bq")
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.96402, 0)

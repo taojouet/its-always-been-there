@@ -1,5 +1,6 @@
 extends Node
 
+signal Door
 signal tuc_touched_player
 signal glass_touched
 signal tuc_killed
