@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://byje8pac008if"]
+
+[ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="1_ekbvv"]
+[ext_resource type="ArrayMesh" uid="uid://curnakkvuai6g" path="res://Assets/ring/ring.obj" id="2_g1oab"]
+[ext_resource type="Script" path="res://Scenes/punch-out/tuc_spawner.gd" id="3_vbnqc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5bf8"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lin00"]
+size = Vector3(23.7582, 5, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i8j8u"]
+size = Vector3(23.2871, 0.2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qsidn"]
+size = Vector3(0.2, 5, 19.7871)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a3a2k"]
+size = Vector3(26.238, 0.2, 20.843)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5gl44"]
+font_size = 84
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ekbvv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.24152, 1.168, -0.167893)
+can_move = false
+
+[node name="platform" type="Node3D" parent="."]
+
+[node name="Ring" type="MeshInstance3D" parent="platform"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -12.2236, 0, 0)
+mesh = ExtResource("2_g1oab")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_b5bf8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="platform/Ring"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.22236, 0, 0)
+
+[node name="righWall" type="CollisionShape3D" parent="platform/Ring/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 9.15858)
+shape = SubResource("BoxShape3D_lin00")
+
+[node name="leftWall" type="CollisionShape3D" parent="platform/Ring/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.5, -9.84295)
+shape = SubResource("BoxShape3D_i8j8u")
+
+[node name="backWall" type="CollisionShape3D" parent="platform/Ring/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56016, 2.5, 0)
+shape = SubResource("BoxShape3D_qsidn")
+
+[node name="floor" type="CollisionShape3D" parent="platform/Ring/StaticBody3D"]
+shape = SubResource("BoxShape3D_a3a2k")
+
+[node name="tuc_spawner" type="Node3D" parent="."]
+script = ExtResource("3_vbnqc")
+
+[node name="Label" type="Label" parent="tuc_spawner"]
+offset_left = 1277.0
+offset_top = 54.0
+offset_right = 1850.0
+offset_bottom = 172.0
+text = "SCORE : 10000"
+label_settings = SubResource("LabelSettings_5gl44")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 3.82137e-15, 4.37114e-08, 1, 1, -1.31134e-07, 1.91069e-15, 0, 14.2455, 0)
+light_energy = 2.0
+shadow_enabled = true
