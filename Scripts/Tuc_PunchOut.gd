@@ -1,7 +1,7 @@
 extends Node3D
 class_name Tuc_PunchOut
 
-const SPEED = 20.0
+var SPEED = 20.0
 
 const LEFT_DIR = Vector3(-0.868243,0,0.496139)
 const RIGHT_DIR = Vector3(0.868243,0,0.496139)
@@ -21,9 +21,21 @@ func be_glass():
 func kill():
 	if is_glass:
 		Events.emit_signal("glass_touched")
+	else:
+		Events.emit_signal("tuc_killed")
 	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	translate_object_local(SPEED*delta* Vector3(1.0, 0.0, 0.0))
 	pass
+
+
+func _on_body_entered(body):
+	if body is Player:
+		if is_glass:
+			Events.emit_signal("tuc_killed")
+		else:
+			Events.emit_signal("player_tucked")
+		queue_free()
+	pass # Replace with function body.
