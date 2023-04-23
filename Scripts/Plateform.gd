@@ -1,6 +1,7 @@
 extends Node3D
 
 signal player_entered
+@export var do_rand = true
 
 const forests = [
 	preload("res://Scenes/Forest/Forest1.tscn"),
@@ -13,7 +14,8 @@ var can_trigger = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rand_forest()
+	if do_rand:
+		rand_forest()
 	pass # Replace with function body.
 
 

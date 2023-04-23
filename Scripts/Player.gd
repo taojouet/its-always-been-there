@@ -5,6 +5,7 @@ class_name Player
 @export var is_lock_Y := false
 @export var can_move := true
 @export var camera_locked := false
+@export var show_punch := false
 
 const JUMP_VELOCITY = 4.5
 
@@ -21,6 +22,8 @@ var lookSensitivity : float = 30
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	if show_punch:
+		$Punch.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 #func _input(event):
@@ -40,7 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$Punch/punchAnim.play("leftPunch")
 			is_punching = true
 			$Punch/leftPunch/LeftHit/LeftCollision.disabled = false
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			is_punching = false
 			$Punch/leftPunch/LeftHit/LeftCollision.disabled = true
 	if Input.is_action_just_pressed("RIGHT_CLICK"):
@@ -48,7 +51,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$Punch/punchAnim.play("rightPunch")
 			is_punching = true
 			$Punch/rightPunch/RightHit/RightCollision.disabled = false
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			is_punching = false
 			$Punch/rightPunch/RightHit/RightCollision.disabled = true
 

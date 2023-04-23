@@ -3,7 +3,7 @@ class_name Slenderman
 
 signal slenderman_catch
 
-var speed = 7
+var speed = 17
 
 enum {
 	IDLE,

@@ -30,6 +30,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Player" parent="." instance=ExtResource("1_ekbvv")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.24152, 1.168, -0.167893)
 can_move = false
+show_punch = true
 
 [node name="platform" type="Node3D" parent="."]
 
