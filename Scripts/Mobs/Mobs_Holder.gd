@@ -28,6 +28,18 @@ func _ready():
 #	m.position = Vector3(10,10,10)
 	pass # Replace with function body.
 
+func destroy_tucs():
+	for tuc in get_children():
+		if tuc is Dropper_Tuc:
+			tuc.queue_free()
+	
+
+func restart_dropper():
+#	destroy_tucs()
+	spawned = 0
+	batch_timer.start()
+	pass
+
 func do_batch():
 	print("FIRE")
 	for i in range(nb_batch):
