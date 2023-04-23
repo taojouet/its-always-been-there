@@ -16,9 +16,10 @@ var lookSensitivity : float = 30
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-func _input(event):
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+#func _input(event):
 
 
 var mouseDelta
@@ -26,21 +27,13 @@ var mouseDelta
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouseDelta = event.relative
-		
-#		# rotate the camera along the x axis
-#		camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity# * delta
-#
-#		# clamp camera x rotation axis
-#		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, minLookAngle, maxLookAngle)
-#
-#		# rotate the player along their y-axis
-#		rotation_degrees.y -= mouseDelta.x * lookSensitivity#* delta
-#
-#		# reset the mouseDelta vector
-#		mouseDelta = Vector2.ZERO
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().quit()
+	if Input.is_action_just_pressed("LEFT_CLICK"):
+		$Punch/punchAnim.play("leftPunch")
+	if Input.is_action_just_pressed("RIGHT_CLICK"):
+		$Punch/punchAnim.play("rightPunch")
 
 func _process(delta):
 	pass
@@ -81,3 +74,9 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func hit_tuc(body):
+	if body is Tuc_PunchOut:
+		body.kill()
+	pass # Replace with function body.

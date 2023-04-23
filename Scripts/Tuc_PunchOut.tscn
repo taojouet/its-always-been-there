@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://11cp3xjfelfu"]
+
+[ext_resource type="Script" path="res://Scripts/Tuc_PunchOut.gd" id="1_vc1ja"]
+[ext_resource type="ArrayMesh" uid="uid://cls5a2kt5gvs7" path="res://Assets/Tuc/tuc.obj" id="2_4defw"]
+[ext_resource type="ArrayMesh" uid="uid://cw7ajrjp1dfl7" path="res://Assets/Tuc/bandana.obj" id="3_svoyr"]
+[ext_resource type="ArrayMesh" uid="uid://ccfyyiachxmwy" path="res://Assets/Tuc/coquille.obj" id="4_j1k2b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xlida"]
+size = Vector3(0.3, 1.5, 1)
+
+[node name="Tuc_PunchOut" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vc1ja")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 0)
+mesh = ExtResource("2_4defw")
+
+[node name="Bandana" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = ExtResource("3_svoyr")
+skeleton = NodePath("../..")
+
+[node name="Coquille" type="MeshInstance3D" parent="MeshInstance3D"]
+mesh = ExtResource("4_j1k2b")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.46192, 0)
+shape = SubResource("BoxShape3D_xlida")
