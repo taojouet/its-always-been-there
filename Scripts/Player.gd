@@ -5,6 +5,7 @@ class_name Player
 @export var is_lock_Y := false
 @export var can_move := true
 @export var camera_locked := false
+@export var show_punch := false
 
 const JUMP_VELOCITY = 4.5
 
@@ -21,6 +22,8 @@ var lookSensitivity : float = 30
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	if show_punch:
+		$Punch.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 #func _input(event):

@@ -60,5 +60,5 @@ func _process(delta):
 
 func end_level():
 	spawn_timer.stop()
-	print("LOST")
+	Events.emit_signal("end_punch_out")
 	pass

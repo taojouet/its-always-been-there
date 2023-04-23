@@ -84,6 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50449, -0.314812)
 current = true
 
 [node name="Punch" type="Node3D" parent="."]
+visible = false
 
 [node name="rightPunch" type="Node3D" parent="Punch"]
 transform = Transform3D(0.592, 0, 0, 0, 0.592, 0, 0, 0, 0.592, 0.698174, 1.1, -0.5)
