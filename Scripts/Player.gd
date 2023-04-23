@@ -21,7 +21,7 @@ func _input(event):
 		get_tree().quit()
 
 
-var mouseDelta
+var mouseDelta = Vector2.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
