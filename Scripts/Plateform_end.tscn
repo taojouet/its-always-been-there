@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ci16yewx32o2a"]
 
-[ext_resource type="Script" path="res://Scripts/Plateform.gd" id="1_gfh17"]
+[ext_resource type="Script" path="res://Scripts/Plateform_end.gd" id="1_mlaxv"]
 [ext_resource type="PackedScene" uid="uid://drkv6fbvrymjn" path="res://Scenes/Forest/Forest1.tscn" id="2_dp31m"]
 [ext_resource type="PackedScene" uid="uid://3hua22fwp12t" path="res://Assets/Slenderman/drink.tscn" id="3_kptmc"]
 
@@ -10,8 +10,8 @@ size = Vector3(5.2, 0.229, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4ho11"]
 size = Vector3(5.022, 1, 5.231)
 
-[node name="Plateform" type="Node3D"]
-script = ExtResource("1_gfh17")
+[node name="Plateform_end" type="Node3D"]
+script = ExtResource("1_mlaxv")
 
 [node name="Floorbody" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.537418)

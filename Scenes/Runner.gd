@@ -4,9 +4,15 @@ const TILE_SIZE = 20
 const PLATEFORM_SCALE = 5
 
 const platform_path = preload("res://Scripts/Plateform.tscn")
-const NUM_PLATFORMS = 15
+const NUM_PLATFORMS = 3
+const NB_PLATFORM_TO_END = 4
+
+const PLATFORM_END_PATH = preload("res://Scripts/Plateform_end.tscn")
+
 var count_platform_pass = 0
 var platforms = []
+
+var reached_end_platform = false
 
 @onready var player_start_pos = $Player.position
 @onready var slenderman_start_pos = $Slenderman.position
@@ -14,7 +20,7 @@ var platforms = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_platforms()	
-	$Slenderman.connect("player_entered", death)
+	$Slenderman.connect("slenderman_catch", death)
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -23,10 +29,13 @@ func _process(delta):
 	pass
 
 func movePlateform():
-	platforms[0].translate( Vector3(0,0,len(platforms)*TILE_SIZE ) )
-	platforms[0].rand_forest()
-	platforms.append(platforms.pop_front())
-	count_platform_pass+=1
+	if not reached_end_platform:
+		platforms[0].translate( Vector3(0,0,len(platforms)*TILE_SIZE ) )
+		platforms[0].rand_forest()
+		platforms.append(platforms.pop_front())
+		count_platform_pass+=1
+		end_platform_refresh()
+	
 
 func death():
 #	$Player.global_position = player_start_pos
@@ -38,6 +47,7 @@ func erase_platforms():
 	platforms = []
 
 func create_platforms():
+	reached_end_platform = false
 	for i in range(NUM_PLATFORMS):
 		var p = platform_path.instantiate()
 		add_child(p)
@@ -63,3 +73,12 @@ func _on_activate_slenderman_body_entered(body):
 		$Slenderman.activate(true)
 	pass # Replace with function body.
 
+func end_platform_refresh():
+	
+	if count_platform_pass >= NB_PLATFORM_TO_END:
+		reached_end_platform = true
+		var platform_end = PLATFORM_END_PATH.instantiate()
+		add_child(platform_end)
+		platform_end.global_transform = platforms[len(platforms)-1].global_transform
+		platform_end.translate(Vector3(0,0,TILE_SIZE) )
+		platforms.append(platform_end)

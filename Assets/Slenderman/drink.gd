@@ -13,4 +13,3 @@ func activate(active):
 		$AnimationPlayer.play("mixamocom")
 	else:
 		$AnimationPlayer.stop()
-			

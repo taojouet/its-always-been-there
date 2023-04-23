@@ -1,7 +1,7 @@
 extends Node3D
 class_name Slenderman
 
-signal player_entered
+signal slenderman_catch
 
 var speed = 7
 
@@ -44,6 +44,6 @@ func play(anim):
 
 func _on_area_3d_body_entered(body):
 	if body is Player and is_active:
-		emit_signal("player_entered")
-		print("player_entered")
+		emit_signal("slenderman_catch")
+#		print("player_entered")
 	pass # Replace with function body.
