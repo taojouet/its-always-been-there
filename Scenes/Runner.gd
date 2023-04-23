@@ -5,7 +5,7 @@ const PLATEFORM_SCALE = 5
 
 const platform_path = preload("res://Scripts/Plateform.tscn")
 const NUM_PLATFORMS = 3
-const NB_PLATFORM_TO_END = 4
+const NB_PLATFORM_TO_END = 2
 
 const PLATFORM_END_PATH = preload("res://Scripts/Plateform_end.tscn")
 
@@ -73,6 +73,9 @@ func _on_activate_slenderman_body_entered(body):
 		$Slenderman.activate(true)
 	pass # Replace with function body.
 
+func disableSlenderman():
+	$Slenderman.activate(false)
+
 func end_platform_refresh():
 	
 	if count_platform_pass >= NB_PLATFORM_TO_END:
@@ -82,3 +85,4 @@ func end_platform_refresh():
 		platform_end.global_transform = platforms[len(platforms)-1].global_transform
 		platform_end.translate(Vector3(0,0,TILE_SIZE) )
 		platforms.append(platform_end)
+		platform_end.connect("player_end_entered", disableSlenderman)

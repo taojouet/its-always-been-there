@@ -26,7 +26,7 @@ shape = SubResource("BoxShape3D_d6cqv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202659, 0)
 
 [node name="Playercollision" type="CollisionShape3D" parent="Playerdetection"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396167, 10.3228)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396167, 2.3228)
 shape = SubResource("BoxShape3D_4ho11")
 
 [node name="ForestHolder" type="Node3D" parent="."]

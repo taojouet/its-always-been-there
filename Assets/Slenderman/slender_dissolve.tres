@@ -1,8 +1,20 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtm11skg4iri3"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://dtm11skg4iri3"]
 
 [ext_resource type="Shader" path="res://Assets/Slenderman/dissolve.gdshader" id="1_aeut5"]
+[ext_resource type="Texture2D" uid="uid://chynjmyu7ptgr" path="res://Assets/Slenderman/Drink/Sitting Drinking-d4b775d8cd6b732a0b871f1f11609aba_SlenderManBaseColor2.png" id="2_vsy8s"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kida7"]
+seed = 5
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_truum"]
+width = 2048
+height = 2048
+noise = SubResource("FastNoiseLite_kida7")
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_aeut5")
-shader_parameter/time = null
+shader_parameter/bias = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_truum")
+shader_parameter/albedo_texture = ExtResource("2_vsy8s")
