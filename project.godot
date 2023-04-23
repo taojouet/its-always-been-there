@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="A Glass of Water"
+run/main_scene="res://Scripts/Celthim_test_scene.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*res://Scripts/Events.gd"
 
 [display]
 
