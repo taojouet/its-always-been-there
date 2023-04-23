@@ -5,41 +5,55 @@ const PLATEFORM_SCALE = 5
 
 @onready var plateform = $Plateform
 const plateform_path = preload("res://Scripts/Plateform.tscn")
-const NUM_PLATFORMS = 2
-var plateforms = []
+const NUM_PLATFORMS = 15
+var platforms = []
 
-		
+@onready var player_start_pos = $Player.position
+@onready var slenderman_start_pos = $Slenderman.position
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-	for i in range(NUM_PLATFORMS):
-		var p = plateform_path.instantiate()
-		add_child(p)
-		p.scale *= PLATEFORM_SCALE
-#		p.getPlayerdetection().connect("body_entered", movePlateform)
-		p.connect("player_entered",movePlateform)
-		plateforms.append(p)
-		p.translate(Vector3(0, 0, i*TILE_SIZE))
-		if i == round(NUM_PLATFORMS/2):
-			$Player.global_position.x=p.global_position.x
-			$Player.global_position.z=p.global_position.z
-		
-		if i == round(NUM_PLATFORMS/2-2):
-			$Slenderman.global_position.x=p.global_position.x
-			$Slenderman.global_position.z=p.global_position.z
-		
+	create_platforms()	
+	$Slenderman.connect("slenderman_catch", death)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func movePlateform():
-	plateforms[0].translate( Vector3(0,0,len(plateforms)*TILE_SIZE ) )
-	plateforms[0].rand_forest()
-	plateforms.append(plateforms.pop_front())
+	platforms[0].translate( Vector3(0,0,len(platforms)*TILE_SIZE ) )
+	platforms[0].rand_forest()
+	platforms.append(platforms.pop_front())
 
-#func movePlateform(body):
-#	return
-#	if body is Player:
-#		plateforms[0].translate( Vector3(0,0,len(plateforms)*TILE_SIZE ) )
-#		plateforms[0].rand_forest()
-#		plateforms.append(plateforms.pop_front())
+func death():
+	$Player.global_position = player_start_pos
+	restart()
+
+func erase_platforms():
+	for i in range(len(platforms)):
+		platforms[i].queue_free()
+	platforms = []
+
+func create_platforms():
+	for i in range(NUM_PLATFORMS):
+		var p = plateform_path.instantiate()
+		add_child(p)
+		p.scale *= PLATEFORM_SCALE
+		p.connect("player_entered",movePlateform)
+		platforms.append(p)
+		p.translate(Vector3(0, 0, i*TILE_SIZE))
+		if i<round(NUM_PLATFORMS/2):
+			p.can_trigger = false
+
+func restart():
+	erase_platforms()
+	$Player.position = player_start_pos
+	$Slenderman.activate(false)
+	$Slenderman.position = slenderman_start_pos
+	create_platforms()
+
+
+func _on_activate_slenderman_body_entered(body):
+	if body is Player:
+		$Slenderman.activate(true)
+	pass # Replace with function body.

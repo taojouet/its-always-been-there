@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://wkgrl6cxx6i4"]
+[gd_scene load_steps=6 format=3 uid="uid://wkgrl6cxx6i4"]
 
 [ext_resource type="Script" path="res://Assets/Slenderman/Slenderman.gd" id="1_66ttb"]
 [ext_resource type="PackedScene" uid="uid://3hua22fwp12t" path="res://Assets/Slenderman/drink.tscn" id="1_xtse4"]
 [ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="2_rn6b7"]
 [ext_resource type="PackedScene" uid="uid://b6gq2x4bny44h" path="res://Assets/Slenderman/run.tscn" id="3_80hyt"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3gqc"]
+size = Vector3(4, 4, 1)
+
 [node name="Slenderman" type="Node3D"]
+visible = false
 script = ExtResource("1_66ttb")
 
 [node name="Drink" parent="." instance=ExtResource("1_xtse4")]
@@ -15,3 +19,13 @@ visible = false
 
 [node name="Run" parent="." instance=ExtResource("3_80hyt")]
 visible = false
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 9
+collision_mask = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_c3gqc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
