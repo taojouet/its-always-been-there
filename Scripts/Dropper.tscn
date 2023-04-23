@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c542ab34648pk"]
+[gd_scene load_steps=20 format=3 uid="uid://ch5lyd4sb3q68"]
 
 [ext_resource type="Script" path="res://Scripts/Dropper.gd" id="1_e67el"]
 [ext_resource type="Script" path="res://Scripts/Mobs/Mobs_Holder.gd" id="1_ogsk8"]

@@ -64,7 +64,9 @@ func Spawn_mobs():
 	m.position = Vector3(random_x, random_y ,random_z)
 	m.rotation = Vector3(0, random_y_rotation, 0)
 	var scale_rate = randi_range(1.0,2.0)
-	m.scale = Vector3.ONE*scale_rate
+	create_tween().tween_property(m,"scale",Vector3.ONE*scale_rate,1.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
+#	await create_tween().tween_property($Player,"global_position",base_player_pos,1.0).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT).finished
+
 	
 #   var random_pos = Vector2(random_x, random_y)
 
