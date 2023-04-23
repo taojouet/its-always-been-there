@@ -37,6 +37,8 @@ func score_up():
 func score_down():
 	score -= floor(100 * 1.5 * mult)
 	update_score()
+	if score <= 0:
+		end_level()
 
 func spawn():
 	var tuc = tuc_inst.instantiate()
@@ -49,6 +51,7 @@ func spawn():
 	spawn_left = !spawn_left
 	spawn_timer.wait_time = max(0.1,spawn_timer.wait_time*0.98)
 	mult *= 1.02
+
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,5 +59,6 @@ func _process(delta):
 	pass
 
 func end_level():
+	spawn_timer.stop()
 	print("LOST")
 	pass

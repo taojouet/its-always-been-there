@@ -27,7 +27,7 @@ func _ready():
 
 var is_punching = false
 
-var mouseDelta
+var mouseDelta = Vector2.ZERO
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -40,7 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$Punch/punchAnim.play("leftPunch")
 			is_punching = true
 			$Punch/leftPunch/LeftHit/LeftCollision.disabled = false
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			is_punching = false
 			$Punch/leftPunch/LeftHit/LeftCollision.disabled = true
 	if Input.is_action_just_pressed("RIGHT_CLICK"):
@@ -48,7 +48,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$Punch/punchAnim.play("rightPunch")
 			is_punching = true
 			$Punch/rightPunch/RightHit/RightCollision.disabled = false
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.25).timeout
 			is_punching = false
 			$Punch/rightPunch/RightHit/RightCollision.disabled = true
 

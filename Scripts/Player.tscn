@@ -8,12 +8,12 @@ custom_solver_bias = 0.037
 [sub_resource type="SphereMesh" id="SphereMesh_75kub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_emmwe"]
-size = Vector3(0.8, 0.8, 0.8)
+size = Vector3(0.8, 0.8, 1.5)
 
 [sub_resource type="SphereMesh" id="SphereMesh_5psvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ampk"]
-size = Vector3(0.8, 0.8, 0.8)
+size = Vector3(0.8, 0.8, 1.5)
 
 [sub_resource type="Animation" id="Animation_n6oe2"]
 length = 1.3
@@ -33,7 +33,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_dvk8k"]
 resource_name = "leftPunch"
-length = 0.5
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,7 +41,7 @@ tracks/0/path = NodePath("Punch/leftPunch:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5),
+"times": PackedFloat32Array(0, 0.12, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.698, 1.1, -0.5), Vector3(-0.3, 1.2, -2), Vector3(-0.698, 1.1, -0.5)]
@@ -49,7 +49,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_xs6pf"]
 resource_name = "rightPunch"
-length = 0.5
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,7 +57,7 @@ tracks/0/path = NodePath("Punch/rightPunch:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.17, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.698174, 1.1, -0.5), Vector3(0.698174, 1.1, -0.892623), Vector3(0.56, 1.1, -2), Vector3(0.698174, 1.1, -0.892623), Vector3(0.698174, 1.1, -0.5)]
