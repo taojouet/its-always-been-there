@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://r4wyxyrfvclq"
+path="res://.godot/imported/commode.obj-86b99f21b480b2d7638ffba3e124138d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/commode.obj-86b99f21b480b2d7638ffba3e124138d.mesh"]
+
+source_file="res://Assets/bedroom.01/0/commode.obj"
+dest_files=["res://.godot/imported/commode.obj-86b99f21b480b2d7638ffba3e124138d.mesh", "res://.godot/imported/commode.obj-86b99f21b480b2d7638ffba3e124138d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
