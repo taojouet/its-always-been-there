@@ -1,5 +1,6 @@
 shader_type spatial;
 
+<<<<<<< HEAD
 uniform float time;
 uniform sampler2D noise;
 
@@ -13,4 +14,19 @@ void fragment() {
 	float dissolve_factor = clamp((dist_to_sphere - size) / (size * 0.1), 0.0, 1.0);
 	vec4 dissolve_color = mix(color, vec4(1.0, 1.0, 1.0, 0.0), dissolve * dissolve_factor);
 	ALBEDO = dissolve_color.rgb;
+=======
+uniform sampler2D noise;
+uniform sampler2D albedo_texture;
+uniform float bias;
+
+void fragment() {
+	float sampledNoise = texture(noise, VERTEX.xy).x;
+	float test = (sampledNoise - 0.5) * 10.0 + 0.5 + 0.0;
+	float transition = mix(0.0, mix(test, 1.0, bias), bias);
+	ALPHA = mix(0.0, 1.0, transition);
+	ALBEDO = texture(albedo_texture, UV).xyz;
+	ROUGHNESS = 0.27;
+	METALLIC = 0.4;
+	SPECULAR = 0.5;
+>>>>>>> main
 }
