@@ -1,0 +1,129 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=3 uid="uid://bt7wtgp48bre"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="26"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorParameter" id="27"]
+parameter_name = "Color"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="28"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="29"]
+parameter_name = "Thikness"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="30"]
+operator = 3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="31"]
+parameter_name = "Slow"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="17"]
+output_port_for_preview = 0
+operator = 9
+
+[sub_resource type="FastNoiseLite" id="18"]
+
+[sub_resource type="NoiseTexture2D" id="19"]
+noise = SubResource("18")
+
+[sub_resource type="VisualShaderNodeTexture" id="20"]
+texture = SubResource("19")
+
+[sub_resource type="VisualShaderNodeVectorFunc" id="21"]
+function = 28
+
+[sub_resource type="VisualShaderNodeInput" id="22"]
+output_port_for_preview = 0
+input_name = "time"
+
+[sub_resource type="VisualShader" id="24"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D tex_frg_4;
+uniform vec4 Color : source_color;
+uniform float Slow;
+uniform float Thikness;
+
+
+
+void fragment() {
+// Texture2D:4
+	vec4 n_out4p0 = texture(tex_frg_4, UV);
+
+
+// ColorParameter:11
+	vec4 n_out11p0 = Color;
+
+
+// Input:6
+	float n_out6p0 = TIME;
+
+
+// FloatParameter:15
+	float n_out15p0 = Slow;
+
+
+// FloatOp:14
+	float n_out14p0 = n_out6p0 / n_out15p0;
+
+
+// VectorFunc:5
+	vec3 n_out5p0 = sqrt(vec3(n_out14p0));
+
+
+// FloatParameter:13
+	float n_out13p0 = Thikness;
+
+
+// FloatOp:12
+	float n_out12p0 = n_out5p0.x + n_out13p0;
+
+
+// FloatOp:2
+	float n_out2p0 = step(n_out4p0.x, n_out12p0);
+
+
+// VectorOp:10
+	vec3 n_out10p0 = vec3(n_out11p0.xyz) * vec3(n_out2p0);
+
+
+// Output:0
+	ALPHA = n_out4p0.x;
+	EMISSION = n_out10p0;
+	BACKLIGHT = n_out5p0;
+
+
+}
+"
+graph_offset = Vector2(-1152.5, 14.5147)
+modes/cull = 2
+nodes/fragment/0/position = Vector2(-100, 40)
+nodes/fragment/2/node = SubResource("17")
+nodes/fragment/2/position = Vector2(-560, 40)
+nodes/fragment/4/node = SubResource("20")
+nodes/fragment/4/position = Vector2(-1040, -120)
+nodes/fragment/5/node = SubResource("21")
+nodes/fragment/5/position = Vector2(-300, 440)
+nodes/fragment/6/node = SubResource("22")
+nodes/fragment/6/position = Vector2(-1100, 520)
+nodes/fragment/10/node = SubResource("26")
+nodes/fragment/10/position = Vector2(-320, 280)
+nodes/fragment/11/node = SubResource("27")
+nodes/fragment/11/position = Vector2(-1020, 340)
+nodes/fragment/12/node = SubResource("28")
+nodes/fragment/12/position = Vector2(-560, 420)
+nodes/fragment/13/node = SubResource("29")
+nodes/fragment/13/position = Vector2(-1000, 140)
+nodes/fragment/14/node = SubResource("30")
+nodes/fragment/14/position = Vector2(-480, 620)
+nodes/fragment/15/node = SubResource("31")
+nodes/fragment/15/position = Vector2(-800, 740)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 1, 4, 0, 2, 0, 5, 0, 0, 18, 2, 0, 10, 1, 5, 0, 12, 0, 12, 0, 2, 1, 13, 0, 12, 1, 11, 0, 10, 0, 10, 0, 0, 5, 15, 0, 14, 1, 6, 0, 14, 0, 14, 0, 5, 0)
+
+[resource]
+render_priority = 0
+shader = SubResource("24")
+shader_parameter/Color = Color(1, 1, 1, 1)
+shader_parameter/Slow = 1.5
+shader_parameter/Thikness = 0.012

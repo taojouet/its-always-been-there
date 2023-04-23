@@ -12,6 +12,7 @@ shader = ExtResource("3_h3vqm")
 size = Vector3(1.31311, 0.0925853, 0.958218)
 
 [node name="Mob" type="Area3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 script = ExtResource("1_v7n83")
 
 [node name="Pivot" type="Node3D" parent="."]

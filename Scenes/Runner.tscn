@@ -1,17 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsle41ecjhi7h"]
+[gd_scene load_steps=12 format=3 uid="uid://dsle41ecjhi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
 [ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
 [ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="3_5vtox"]
+[ext_resource type="Texture2D" uid="uid://qodcn2yftins" path="res://Assets/Sky/animestyled_hdr_night.hdr" id="4_8jgn2"]
 [ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="4_uiclm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_75dwx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_eohv3"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_xhpia"]
+panorama = ExtResource("4_8jgn2")
+
+[sub_resource type="Sky" id="Sky_gko3s"]
+sky_material = SubResource("PanoramaSkyMaterial_xhpia")
+
 [sub_resource type="Environment" id="Environment_3hpyp"]
+background_mode = 2
+sky = SubResource("Sky_gko3s")
 tonemap_exposure = 1.67
-fog_enabled = true
 fog_light_energy = 2.18
 volumetric_fog_enabled = true
 volumetric_fog_sky_affect = 0.684
@@ -28,14 +36,14 @@ script = ExtResource("1_0t6m7")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -99.3492)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Plateform"]
-transform = Transform3D(8.96909, 0, 0, 0, 5.79269, 0, 0, 0, 4.47564, 0, 0, -1.36694)
+transform = Transform3D(8.96909, 0, 0, 0, 6.69181, 0, 0, 0, 4.47564, 0, 0, -1.36694)
 mesh = SubResource("BoxMesh_75dwx")
 
 [node name="Player" parent="." instance=ExtResource("3_5vtox")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.524857, 1.95218, -92.6632)
-collision_layer = 9
-collision_mask = 9
-SPEED = 8.0
+collision_layer = 5
+collision_mask = 5
+SPEED = 15.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991695, 0)
@@ -48,7 +56,7 @@ transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065
 environment = SubResource("Environment_3hpyp")
 
 [node name="Slenderman" parent="." instance=ExtResource("4_uiclm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.524857, 1.44098, -99.2783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.525, 1.5, -99.278)
 
 [node name="ActivateSlenderman" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18271, 0)
