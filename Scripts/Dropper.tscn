@@ -82,9 +82,11 @@ mesh = SubResource("CylinderMesh_e11s6")
 surface_material_override/0 = SubResource("StandardMaterial3D_8u2ig")
 
 [node name="WinTrigger" type="Area3D" parent="Map/Floor"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Map/Floor/WinTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+visible = false
 shape = SubResource("CylinderShape3D_lfwp3")
 script = ExtResource("3_82na5")
 

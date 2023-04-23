@@ -41,7 +41,7 @@ func restart_dropper():
 	pass
 
 func do_batch():
-#	print("FIRE")
+	print("FIRE")
 	for i in range(nb_batch):
 		Spawn_mobs()
 		spawned += 1
