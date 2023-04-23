@@ -1,9 +1,9 @@
 extends Node3D
 class_name Slenderman
 
-signal slenderman_catch
+signal player_entered
 
-var speed = 6.0
+var speed = 7
 
 enum {
 	IDLE,
@@ -44,6 +44,6 @@ func play(anim):
 
 func _on_area_3d_body_entered(body):
 	if body is Player and is_active:
-		emit_signal("slenderman_catch")
-		print("CATCH")
+		emit_signal("player_entered")
+		print("player_entered")
 	pass # Replace with function body.

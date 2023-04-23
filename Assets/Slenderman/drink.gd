@@ -7,6 +7,10 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func activate(active):
+	visible = active
+	if active:
+		$AnimationPlayer.play("mixamocom")
+	else:
+		$AnimationPlayer.stop()
+			

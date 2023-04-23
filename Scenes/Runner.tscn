@@ -28,13 +28,11 @@ script = ExtResource("1_0t6m7")
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -99.3492)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Plateform"]
-transform = Transform3D(8.96909, 0, 0, 0, 5.79269, 0, 0, 0, 4.47564, 0, 0, -1.36694)
+transform = Transform3D(8.96909, 0, 0, 0, 6.69181, 0, 0, 0, 4.47564, 0, 0, -1.36694)
 mesh = SubResource("BoxMesh_75dwx")
 
 [node name="Player" parent="." instance=ExtResource("3_5vtox")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.524857, 1.95218, -92.6632)
-collision_layer = 9
-collision_mask = 9
 SPEED = 8.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
@@ -48,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, -0.514065, 0.857751, 0, -0.857751, -0.514065
 environment = SubResource("Environment_3hpyp")
 
 [node name="Slenderman" parent="." instance=ExtResource("4_uiclm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.524857, 1.44098, -99.2783)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.525, 1.5, -99.278)
 
 [node name="ActivateSlenderman" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18271, 0)

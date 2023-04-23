@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtm11skg4iri3"]
+
+[ext_resource type="Shader" path="res://Assets/Slenderman/dissolve.gdshader" id="1_aeut5"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_aeut5")
+shader_parameter/time = null
