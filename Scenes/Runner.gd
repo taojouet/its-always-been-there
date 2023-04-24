@@ -4,8 +4,8 @@ const TILE_SIZE = 20
 const PLATEFORM_SCALE = 5
 
 const platform_path = preload("res://Scripts/Plateform.tscn")
-const NUM_PLATFORMS = 3
-const NB_PLATFORM_TO_END = 2
+const NUM_PLATFORMS = 2
+const NB_PLATFORM_TO_END = 0
 
 const PLATFORM_END_PATH = preload("res://Scripts/Plateform_end.tscn")
 
@@ -14,19 +14,25 @@ var platforms = []
 
 var reached_end_platform = false
 
-@onready var player_start_pos = $Player.position
+@onready var player_start_pos = Vector3(0,1,-90)
 @onready var slenderman_start_pos = $Slenderman.position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_platforms()	
 	$Slenderman.connect("slenderman_catch", death)
+	Events.connect("Door",openDoor)
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $Slenderman.is_active:
 		$Slenderman.position.x = lerp($Slenderman.position.x,$Player.position.x,0.05)
 	pass
+
+func openDoor():
+	await get_tree().create_timer(1.0).timeout
+	$Plateform/HomeStart/Idle.position = Vector3(0,0,-98)
+	$Plateform/HomeStart/Idle.rotation_degrees.y += 180
 
 func movePlateform():
 	if not reached_end_platform:
@@ -63,7 +69,8 @@ func restart():
 	$Slenderman.activate(false)
 	$Slenderman.position = slenderman_start_pos
 #	$Player.position = player_start_pos
-	create_tween().tween_property($Player,"rotation_degrees",Vector3(0,180,0),1.0).set_ease(Tween.EASE_IN)
+	if $Player.rotation_degrees.y<160 or $Player.rotation_degrees.y>200:
+		create_tween().tween_property($Player,"rotation_degrees",Vector3(0,180,0),1.0).set_ease(Tween.EASE_IN)
 	await create_tween().tween_property($Player,"position",player_start_pos,1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).finished
 	create_platforms()
 
@@ -86,3 +93,9 @@ func end_platform_refresh():
 		platform_end.translate(Vector3(0,0,TILE_SIZE) )
 		platforms.append(platform_end)
 		platform_end.connect("player_end_entered", disableSlenderman)
+		platform_end.connect("player_animation_end_entered", end_level)
+
+func end_level():
+	$Player.can_move = false
+	await get_tree().create_timer(10.0).timeout
+	Events.emit_signal("end_slender")

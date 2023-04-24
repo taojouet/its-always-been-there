@@ -23,3 +23,4 @@ func _on_playerdetection_body_entered(body):
 func _on_area_3d_body_entered(body : Node3D):
 	pass # Replace with function body.
 	$Drink.activate(true)
+	emit_signal("player_animation_end_entered")
