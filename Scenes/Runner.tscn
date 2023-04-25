@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dsle41ecjhi7h"]
+[gd_scene load_steps=19 format=3 uid="uid://dsle41ecjhi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
 [ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://qodcn2yftins" path="res://Assets/Sky/animestyled_hdr_night.hdr" id="4_8jgn2"]
 [ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="4_uiclm"]
 [ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="7_pxcrx"]
+[ext_resource type="AudioStream" uid="uid://bfob8rqxeoyce" path="res://Assets/Sounds/167921__commanderderp__slender.mp3" id="8_cmvy5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wa52"]
 size = Vector3(14, 1, 2)
@@ -107,5 +108,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18271, -50.6493)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivateSlenderman"]
 shape = SubResource("BoxShape3D_gclde")
+
+[node name="Slender_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_cmvy5")
 
 [connection signal="body_entered" from="ActivateSlenderman" to="." method="_on_activate_slenderman_body_entered"]

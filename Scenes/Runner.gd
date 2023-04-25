@@ -16,6 +16,7 @@ var reached_end_platform = false
 
 @onready var player_start_pos = Vector3(0,1,-90)
 @onready var slenderman_start_pos = $Slenderman.position
+@onready var slender_sound = $Slender_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -66,7 +67,7 @@ func create_platforms():
 		p.translate(Vector3(0, 0, i*TILE_SIZE))
 		if i<round(NUM_PLATFORMS/2):
 			p.can_trigger = false
-
+ 
 func restart():
 	$Player.can_move = false
 	$Player.camera_locked = true
@@ -74,7 +75,8 @@ func restart():
 	$Slenderman.position.z -= 6
 	$Slenderman/Run/AnimationPlayer.stop(true)
 	$Player.slender_camera_catch()
-	await get_tree().create_timer(1.0).timeout
+	$Slender_sound.play()
+	await get_tree().create_timer(9.0).timeout
 	$Player.slender_camera_catch(true)
 	await create_tween().tween_property($Player,"position",player_start_pos,1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).finished
 #	await get_tree().create_timer(0.5).timeout
