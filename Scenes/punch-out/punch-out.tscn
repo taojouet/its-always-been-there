@@ -24,7 +24,7 @@ size = Vector3(0.2, 5, 19.7871)
 size = Vector3(26.238, 0.2, 20.843)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5gl44"]
-font_size = 84
+font_size = 75
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
@@ -98,11 +98,11 @@ script = ExtResource("3_vbnqc")
 
 [node name="Label" type="Label" parent="tuc_spawner"]
 visible = false
-offset_left = 1277.0
-offset_top = 54.0
-offset_right = 1850.0
-offset_bottom = 172.0
-text = "SCORE : 5000"
+offset_left = 1159.0
+offset_top = 20.0
+offset_right = 1909.0
+offset_bottom = 138.0
+text = "SCORE : 500/10000"
 label_settings = SubResource("LabelSettings_5gl44")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
