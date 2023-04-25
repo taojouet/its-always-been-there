@@ -9,12 +9,12 @@ func _ready():
 
 
 func activate(active):
-	# visible = active
-	print("Active", active)
 	if active: 
+		$RootNode/Skeleton3D/BoneAttachment3D/GlassStl2.get_surface_override_material(0).next_pass = null
 		$AnimationPlayer2.play("Dissolve_in")
 		await  $AnimationPlayer2.animation_finished
 		$AnimationPlayer.play("mixamocom")
+		$RootNode/Skeleton3D/BoneAttachment3D/GlassStl2.drink(5.0)
 	else:
 		$AnimationPlayer.stop()
 		$AnimationPlayer2.play_backwards("Dissolve_in")

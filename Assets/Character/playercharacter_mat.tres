@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dud530bthn1wf"]
+
+[ext_resource type="Texture2D" uid="uid://bag6tahecyixf" path="res://Assets/Character/skin_man.png" id="1_m51i7"]
+
+[resource]
+albedo_texture = ExtResource("1_m51i7")

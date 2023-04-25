@@ -1,12 +1,15 @@
-[gd_scene load_steps=10 format=3 uid="uid://byje8pac008if"]
+[gd_scene load_steps=17 format=3 uid="uid://byje8pac008if"]
 
 [ext_resource type="PackedScene" uid="uid://cu3tnip4q7f15" path="res://Scripts/Player.tscn" id="1_ekbvv"]
+[ext_resource type="Script" path="res://Scenes/punch-out/punch-out.gd" id="1_ybdda"]
 [ext_resource type="ArrayMesh" uid="uid://curnakkvuai6g" path="res://Assets/ring/ring.obj" id="2_g1oab"]
 [ext_resource type="Script" path="res://Scenes/punch-out/tuc_spawner.gd" id="3_vbnqc"]
+[ext_resource type="Texture2D" uid="uid://ditvgvcdjx1qm" path="res://Miscellanous/Sky/test_ring_box.jpg" id="4_uhguw"]
+[ext_resource type="PackedScene" uid="uid://bltirlau7kf5" path="res://Scenes/Home/HomeLighting.tscn" id="6_yu07v"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5bf8"]
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
+albedo_color = Color(0.431373, 0.431373, 0.431373, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lin00"]
 size = Vector3(23.7582, 5, 0.2)
@@ -25,17 +28,49 @@ font_size = 84
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4aerm"]
+panorama = ExtResource("4_uhguw")
+
+[sub_resource type="Sky" id="Sky_4acrg"]
+sky_material = SubResource("PanoramaSkyMaterial_4aerm")
+
+[sub_resource type="Environment" id="Environment_ykj0j"]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_4acrg")
+sky_rotation = Vector3(0, -1.5708, 0)
+ambient_light_color = Color(0.862745, 0.862745, 0.862745, 1)
+reflected_light_source = 2
+tonemap_mode = 1
+tonemap_exposure = 0.8
+tonemap_white = 16.0
+ssr_fade_in = 0.00452782
+ssao_radius = 6.55
+ssao_intensity = 15.74
+ssil_radius = 1.97
+ssil_intensity = 9.42
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.192157, 0.192157, 0.192157, 1)
+adjustment_brightness = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kulad"]
+size = Vector3(15, 1, 15)
+
+[node name="PunchOut" type="Node3D"]
+script = ExtResource("1_ybdda")
 
 [node name="Player" parent="." instance=ExtResource("1_ekbvv")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.24152, 1.168, -0.167893)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.24152, 0.0704768, -0.167893)
 can_move = false
+camera_locked = true
 show_punch = true
+Level = "Punchout"
 
 [node name="platform" type="Node3D" parent="."]
 
 [node name="Ring" type="MeshInstance3D" parent="platform"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -12.2236, 0, 0)
+transparency = 1.0
 mesh = ExtResource("2_g1oab")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_b5bf8")
@@ -62,14 +97,28 @@ shape = SubResource("BoxShape3D_a3a2k")
 script = ExtResource("3_vbnqc")
 
 [node name="Label" type="Label" parent="tuc_spawner"]
+visible = false
 offset_left = 1277.0
 offset_top = 54.0
 offset_right = 1850.0
 offset_bottom = 172.0
-text = "SCORE : 10000"
+text = "SCORE : 5000"
 label_settings = SubResource("LabelSettings_5gl44")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1.31134e-07, 1, -4.37114e-08, 3.82137e-15, 4.37114e-08, 1, 1, -1.31134e-07, 1.91069e-15, 0, 14.2455, 0)
 light_energy = 2.0
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ykj0j")
+
+[node name="HomeStart" parent="." instance=ExtResource("6_yu07v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.68537, -0.728718, -0.127345)
+
+[node name="Area3D" type="Area3D" parent="HomeStart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.38876, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HomeStart/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01575, -0.0591431, 0)
+shape = SubResource("BoxShape3D_kulad")

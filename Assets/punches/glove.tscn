@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://7euclupuhww7"]
+
+[ext_resource type="PackedScene" uid="uid://cklmnfb8o2h5p" path="res://Assets/punches/Glove.fbx" id="1_4deia"]
+
+[node name="Glove" instance=ExtResource("1_4deia")]

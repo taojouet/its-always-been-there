@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpih6vdn5w3ii"]
+
+[ext_resource type="PackedScene" uid="uid://ctp4a0cp002hb" path="res://Assets/Character/basicCharacter.gltf" id="1_dnk8i"]
+[ext_resource type="Material" uid="uid://dud530bthn1wf" path="res://Assets/Character/playercharacter_mat.tres" id="2_atf6x"]
+
+[node name="basicCharacter" instance=ExtResource("1_dnk8i")]
+
+[node name="Body1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_atf6x")
+
+[node name="Head1" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_atf6x")
+
+[node name="ArmLeft1" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_atf6x")
+
+[node name="ArmRight1" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_atf6x")
+
+[node name="LegLeft1" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_atf6x")
+
+[node name="LegRight1" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_atf6x")
