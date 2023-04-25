@@ -6,6 +6,7 @@ class_name Player
 @export var can_move := true
 @export var camera_locked := false
 @export var show_punch := false
+@export var Level := ""
 
 const JUMP_VELOCITY = 4.5
 
@@ -14,9 +15,13 @@ var minLookAngle : float = -90.0
 var maxLookAngle : float = 90.0
 var lookSensitivity : float = 30
 
+var wait_punch = false
+var cpt_punch = 0
 
 @onready var camera = $Neck/Camera3D
 @onready var camera_rotation = camera.rotation_degrees
+
+@onready var base_camera_transform = camera.transform
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -24,6 +29,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	if show_punch:
 		$Punch.visible = true
+		wait_punch = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 #func _input(event):
@@ -38,22 +44,29 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
-	if Input.is_action_just_pressed("LEFT_CLICK"):
-		if not is_punching:
-			$Punch/punchAnim.play("leftPunch")
-			is_punching = true
-			$Punch/leftPunch/LeftHit/LeftCollision.disabled = false
-			await get_tree().create_timer(0.25).timeout
-			is_punching = false
-			$Punch/leftPunch/LeftHit/LeftCollision.disabled = true
-	if Input.is_action_just_pressed("RIGHT_CLICK"):
-		if not is_punching:
-			$Punch/punchAnim.play("rightPunch")
-			is_punching = true
-			$Punch/rightPunch/RightHit/RightCollision.disabled = false
-			await get_tree().create_timer(0.25).timeout
-			is_punching = false
-			$Punch/rightPunch/RightHit/RightCollision.disabled = true
+		
+	if show_punch:
+		if Input.is_action_just_pressed("LEFT_CLICK"):
+			if not is_punching:
+				$Punch/punchAnim.play("leftPunch")
+				is_punching = true
+				$Punch/leftPunch/LeftHit/LeftCollision.disabled = false
+				await get_tree().create_timer(0.25).timeout
+				is_punching = false
+				$Punch/leftPunch/LeftHit/LeftCollision.disabled = true
+				cpt_punch += 1
+		if Input.is_action_just_pressed("RIGHT_CLICK"):
+			if not is_punching:
+				$Punch/punchAnim.play("rightPunch")
+				is_punching = true
+				$Punch/rightPunch/RightHit/RightCollision.disabled = false
+				await get_tree().create_timer(0.25).timeout
+				is_punching = false
+				$Punch/rightPunch/RightHit/RightCollision.disabled = true
+				cpt_punch += 1
+		if cpt_punch >1 and wait_punch:
+			wait_punch = false
+			Events.emit_signal("two_punch")
 
 func _process(delta):
 	if not camera_locked:
@@ -94,9 +107,16 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	if can_move:
+		pass
 		move_and_slide()
 
 
+func slender_camera_catch(reverse=false):
+	if reverse:
+		$Punch/punchAnim.play_backwards("SlenderCatch")
+	else:
+		$Punch/punchAnim.play("SlenderCatch")
+	
 func hit_tuc(body):
 	if body is Tuc_PunchOut:
 		body.kill()

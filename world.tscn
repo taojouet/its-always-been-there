@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://0fgcx8p18wmx"]
+[gd_scene load_steps=3 format=3 uid="uid://0fgcx8p18wmx"]
+
+[ext_resource type="PackedScene" uid="uid://2m2c0a5jigls" path="res://Scenes/Menu/GameStart.tscn" id="1_pbgcw"]
+[ext_resource type="Script" path="res://world.gd" id="1_qmf8o"]
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_qmf8o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 1806.0
+offset_top = 969.0
+offset_right = 1881.0
+offset_bottom = 1022.0
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="GameStart" parent="." instance=ExtResource("1_pbgcw")]
+transform = Transform3D(1.65, 0, 0, 0, 1.65, 0, 0, 0, 1.65, -1.17871, 0.905215, -105.597)

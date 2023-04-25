@@ -3,7 +3,7 @@ class_name Slenderman
 
 signal slenderman_catch
 
-var speed = 17
+var speed = 14
 
 enum {
 	IDLE,
@@ -34,16 +34,13 @@ func hide_anim():
 func play(anim):
 	hide_anim()
 	match(anim):
-		IDLE:
-			$Idle.visible = true
 		RUN:
 			$Run.visible = true
-		DRINK:
-			$Drink.visible = true
 
 
 func _on_area_3d_body_entered(body):
 	if body is Player and is_active:
+		is_active = false
 		emit_signal("slenderman_catch")
 #		print("player_entered")
 	pass # Replace with function body.

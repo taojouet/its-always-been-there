@@ -1,10 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://3hua22fwp12t"]
+[gd_scene load_steps=17 format=3 uid="uid://3hua22fwp12t"]
 
 [ext_resource type="PackedScene" uid="uid://prps0c6l6oxd" path="res://Assets/Slenderman/Drink/Sitting Drinking.fbx" id="1_3nwxq"]
 [ext_resource type="Script" path="res://Assets/Slenderman/drink.gd" id="2_do8te"]
 [ext_resource type="Shader" path="res://Assets/Slenderman/dissolve.gdshader" id="3_77viy"]
 [ext_resource type="Material" uid="uid://dtm11skg4iri3" path="res://Assets/Slenderman/slender_dissolve.tres" id="3_vfgnl"]
-[ext_resource type="PackedScene" uid="uid://b0pobjrb84lq5" path="res://Assets/Glass/Glass.tscn" id="5_6apuc"]
+[ext_resource type="PackedScene" uid="uid://5hbumitsbfpw" path="res://Assets/Glass/Glass_OK.tscn" id="5_5y41x"]
+[ext_resource type="Material" uid="uid://bu86t7qv1tvsr" path="res://Assets/Slenderman/drink_xray.tres" id="6_4tgfp"]
+[ext_resource type="ArrayMesh" uid="uid://cirs4wepnipwc" path="res://Assets/Log/Log_New.obj" id="6_pjkca"]
+[ext_resource type="Texture2D" uid="uid://88pug4lmmw3c" path="res://Assets/Log/Textures_output.png" id="7_n7ihd"]
+[ext_resource type="Texture2D" uid="uid://d306a17ycfvgs" path="res://Assets/Log/Textures_output_2.png" id="8_fjxwp"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_kida7"]
 seed = 5
@@ -81,6 +85,11 @@ _data = {
 "Dissolve_in": SubResource("Animation_h7lvh"),
 "RESET": SubResource("Animation_6xmn2")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1m6ic"]
+albedo_texture = ExtResource("7_n7ihd")
+normal_enabled = true
+normal_texture = ExtResource("8_fjxwp")
 
 [node name="Drink" instance=ExtResource("1_3nwxq")]
 script = ExtResource("2_do8te")
@@ -165,12 +174,13 @@ surface_material_override/0 = ExtResource("3_vfgnl")
 surface_material_override/0 = ExtResource("3_vfgnl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="RootNode/Skeleton3D" index="7"]
-transform = Transform3D(-0.304265, -0.572294, -0.761513, 0.947338, -0.265598, -0.178909, -0.099868, -0.775846, 0.622968, -0.239473, 1.46992, 5.17584)
+transform = Transform3D(-0.304266, -0.572294, -0.761514, 0.947338, -0.265598, -0.17891, -0.099868, -0.775847, 0.622968, -0.239472, 1.46993, 5.17583)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
-[node name="GlassStl" parent="RootNode/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("5_6apuc")]
-transform = Transform3D(-0.0588474, 0.0365786, 0.495176, -0.222813, 0.443671, -0.0592533, -0.443725, -0.227637, -0.0359174, -0.0895425, 0.272836, 0.325576)
+[node name="GlassStl2" parent="RootNode/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("5_5y41x")]
+transform = Transform3D(-0.0882711, 0.0548679, 0.742764, -0.334219, 0.665506, -0.08888, -0.665587, -0.341455, -0.0538761, -0.085174, 0.325824, 0.298389)
+surface_material_override/0 = ExtResource("6_4tgfp")
 
 [node name="Camera3D" type="Camera3D" parent="." index="2"]
 transform = Transform3D(-0.804904, 0, -0.593405, 0, 1, 0, 0.593405, 0, -0.804904, 0, 2.35962, -4.53764)
@@ -180,3 +190,8 @@ root_node = NodePath("../RootNode/Skeleton3D/Plane")
 libraries = {
 "": SubResource("AnimationLibrary_wchgu")
 }
+
+[node name="LogNew" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.196274, 0.188759, 0.709475)
+mesh = ExtResource("6_pjkca")
+surface_material_override/0 = SubResource("StandardMaterial3D_1m6ic")

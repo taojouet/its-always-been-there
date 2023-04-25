@@ -20,14 +20,17 @@ func be_glass():
 	$GlassStl.visible = true
 	$MeshInstance3D.visible = false
 	is_glass = true
+	$CollisionShape3D.position.x += 0.66
 
 func kill():
+	is_active = false
 	if is_glass:
+		is_active = false
+		await create_tween().tween_property($GlassStl.get_surface_override_material(0),"grow_amount",0.1,1.0).finished
 		Events.emit_signal("glass_touched")
 		
 	else:
 		Events.emit_signal("tuc_killed")
-		is_active = false
 		create_tween().tween_property(self,"global_position:x",global_position.x+10,0.20).set_trans(Tween.TRANS_EXPO)
 		await create_tween().tween_property(self,"rotation_degrees:z",85,0.25).set_trans(Tween.TRANS_EXPO)
 		await get_tree().create_timer(0.15).timeout
@@ -42,6 +45,9 @@ func _process(delta):
 func _on_body_entered(body):
 	if body is Player:
 		if is_glass:
+			is_active = false
+			$GlassStl.drink(0.15)
+			await get_tree().create_timer(0.25).timeout	
 			Events.emit_signal("tuc_killed")
 		else:
 			Events.emit_signal("player_tucked")
