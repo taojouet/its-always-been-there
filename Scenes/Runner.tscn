@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsle41ecjhi7h"]
+[gd_scene load_steps=22 format=3 uid="uid://dsle41ecjhi7h"]
 
 [ext_resource type="Script" path="res://Scenes/Runner.gd" id="1_0t6m7"]
 [ext_resource type="PackedScene" uid="uid://b1u6dgs77r762" path="res://Scripts/Plateform.tscn" id="2_k7ad4"]
@@ -6,8 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bltirlau7kf5" path="res://Scenes/Home/HomeLighting.tscn" id="3_wv24i"]
 [ext_resource type="Texture2D" uid="uid://qodcn2yftins" path="res://Assets/Sky/animestyled_hdr_night.hdr" id="4_8jgn2"]
 [ext_resource type="PackedScene" uid="uid://wkgrl6cxx6i4" path="res://Assets/Slenderman/Slenderman.tscn" id="4_uiclm"]
+[ext_resource type="AudioStream" uid="uid://cw206lsefmws6" path="res://Assets/Sounds/Ambiant_house.mp3" id="5_2ayy5"]
 [ext_resource type="PackedScene" uid="uid://bxli7eeeprq50" path="res://Assets/Slenderman/idle.tscn" id="7_pxcrx"]
 [ext_resource type="AudioStream" uid="uid://bfob8rqxeoyce" path="res://Assets/Sounds/167921__commanderderp__slender.mp3" id="8_cmvy5"]
+[ext_resource type="AudioStream" uid="uid://ctlfwres5geo7" path="res://Assets/Sounds/440645__seansecret__opening-door-1.wav" id="9_yrw3m"]
+[ext_resource type="AudioStream" uid="uid://bcm2qn280id5m" path="res://Assets/Sounds/Heart.mp3" id="10_bpw8n"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0wa52"]
 size = Vector3(14, 1, 2)
@@ -81,6 +84,10 @@ mesh = SubResource("BoxMesh_uyer1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12852, 4.69504, 4.95658)
 mesh = SubResource("BoxMesh_wgeox")
 
+[node name="Ambiant_sound" type="AudioStreamPlayer3D" parent="Plateform/HomeStart"]
+transform = Transform3D(0.606061, 0, 0, 0, 0.606061, 0, 0, 0, 0.606061, 0, 1.84071, 0)
+stream = ExtResource("5_2ayy5")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Plateform"]
 transform = Transform3D(4.12767, 0, 0, 0, 0.288307, 0.00176805, 0, -0.58646, 0.000869183, -0.237183, 1.70495, -0.455093)
 mesh = SubResource("BoxMesh_j81vc")
@@ -111,5 +118,13 @@ shape = SubResource("BoxShape3D_gclde")
 
 [node name="Slender_sound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_cmvy5")
+volume_db = -14.932
+
+[node name="Door_sound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94187, -97.5395)
+stream = ExtResource("9_yrw3m")
+
+[node name="Heart_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_bpw8n")
 
 [connection signal="body_entered" from="ActivateSlenderman" to="." method="_on_activate_slenderman_body_entered"]

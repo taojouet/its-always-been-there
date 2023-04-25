@@ -81,11 +81,8 @@ func _process(delta):
 		
 		# reset the mouseDelta vector
 		mouseDelta = Vector2.ZERO
-  
 
 func _physics_process(delta):
-	
-	
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -109,7 +106,6 @@ func _physics_process(delta):
 	if can_move:
 		pass
 		move_and_slide()
-
 
 func slender_camera_catch(reverse=false):
 	if reverse:

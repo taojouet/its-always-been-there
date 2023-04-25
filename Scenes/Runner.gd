@@ -5,7 +5,7 @@ const PLATEFORM_SCALE = 5
 
 const platform_path = preload("res://Scripts/Plateform.tscn")
 const NUM_PLATFORMS = 2
-const NB_PLATFORM_TO_END = 0
+const NB_PLATFORM_TO_END = 3
 
 const PLATFORM_END_PATH = preload("res://Scripts/Plateform_end.tscn")
 
@@ -16,11 +16,11 @@ var reached_end_platform = false
 
 @onready var player_start_pos = Vector3(0,1,-90)
 @onready var slenderman_start_pos = $Slenderman.position
-@onready var slender_sound = $Slender_sound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	create_platforms()	
+	$Plateform/HomeStart/Ambiant_sound.play()
+	create_platforms()
 	$Slenderman.connect("slenderman_catch", death)
 	Events.connect("Door",openDoor)
 	await get_tree().create_timer(0.5).timeout
@@ -34,6 +34,8 @@ func _process(delta):
 	pass
 
 func openDoor():
+	$Door_sound.play()
+	$Plateform/HomeStart/Ambiant_sound.stop()
 	await get_tree().create_timer(2.0).timeout
 	$Plateform/HomeStart/Idle.position = Vector3(1.25,0.133,4.5)
 	$Plateform/HomeStart/Idle.rotation_degrees.y += 180
@@ -45,7 +47,6 @@ func movePlateform():
 		platforms.append(platforms.pop_front())
 		count_platform_pass+=1
 		end_platform_refresh()
-	
 
 func death():
 #	$Player.global_position = player_start_pos
@@ -67,7 +68,7 @@ func create_platforms():
 		p.translate(Vector3(0, 0, i*TILE_SIZE))
 		if i<round(NUM_PLATFORMS/2):
 			p.can_trigger = false
- 
+
 func restart():
 	$Player.can_move = false
 	$Player.camera_locked = true
@@ -75,6 +76,9 @@ func restart():
 	$Slenderman.position.z -= 6
 	$Slenderman/Run/AnimationPlayer.stop(true)
 	$Player.slender_camera_catch()
+	$Heart_sound.position = $Slenderman.position
+	$Heart_sound.play()
+	$Slender_sound.position = $Slenderman.position
 	$Slender_sound.play()
 	await get_tree().create_timer(9.0).timeout
 	$Player.slender_camera_catch(true)
