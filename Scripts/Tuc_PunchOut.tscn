@@ -24,7 +24,7 @@ shader = ExtResource("7_2r0fv")
 [sub_resource type="BoxShape3D" id="BoxShape3D_xlida"]
 size = Vector3(0.623951, 1.5, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fde4e"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djagl"]
 resource_local_to_scene = true
 blend_mode = 1
 depth_draw_mode = 2
@@ -63,6 +63,6 @@ shape = SubResource("BoxShape3D_xlida")
 
 [node name="GlassStl" parent="." instance=ExtResource("8_dwtgq")]
 visible = false
-surface_material_override/0 = SubResource("StandardMaterial3D_fde4e")
+surface_material_override/0 = SubResource("StandardMaterial3D_djagl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
