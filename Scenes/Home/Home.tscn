@@ -1,20 +1,21 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7ms0p2ey3w58"]
+[gd_scene load_steps=27 format=3 uid="uid://c7ms0p2ey3w58"]
 
 [ext_resource type="Script" path="res://Scenes/Home/Home.gd" id="1_8flkr"]
 [ext_resource type="ArrayMesh" uid="uid://bwkhprt5rr3g1" path="res://Assets/bedroom.01/0/bed.obj" id="1_kj3lm"]
 [ext_resource type="Shader" path="res://Assets/bedroom.01/Home.gdshader" id="2_n1wfr"]
 [ext_resource type="ArrayMesh" uid="uid://b87h6x7prmfu7" path="res://Assets/bedroom.01/0/carpet.obj" id="3_id20t"]
+[ext_resource type="Material" uid="uid://co1n2dblu45pu" path="res://Scenes/Home/Home_dissolver.tres" id="3_y8mpa"]
 [ext_resource type="ArrayMesh" uid="uid://r4wyxyrfvclq" path="res://Assets/bedroom.01/0/commode.obj" id="4_54b6q"]
 [ext_resource type="ArrayMesh" uid="uid://bxulr48vxlj7o" path="res://Assets/bedroom.01/0/desk.obj" id="5_ypn4x"]
-[ext_resource type="ArrayMesh" uid="uid://dm74poj0q0xe7" path="res://Assets/bedroom.01/0/doors.obj" id="6_n3adg"]
 [ext_resource type="ArrayMesh" uid="uid://cmlu5i8o21hf4" path="res://Assets/bedroom.01/0/frames.obj" id="7_llgle"]
 [ext_resource type="ArrayMesh" uid="uid://b7w3hi6h7sk3q" path="res://Assets/bedroom.01/0/shelf.obj" id="8_4sujc"]
 [ext_resource type="ArrayMesh" uid="uid://be5lonympq7n0" path="res://Assets/bedroom.01/0/walls.obj" id="9_8uywi"]
+[ext_resource type="Material" uid="uid://cej8ypko3lfp7" path="res://Scenes/Home/Home_dissolve.tres" id="11_52e1o"]
 [ext_resource type="ArrayMesh" uid="uid://cacnkfxeyfctc" path="res://Assets/bedroom.01/0/door_frames.obj" id="11_fuqxq"]
 [ext_resource type="ArrayMesh" uid="uid://bv8wtqso4okqw" path="res://Assets/bedroom.01/0/door_b.obj" id="12_awk11"]
 [ext_resource type="ArrayMesh" uid="uid://dtwwxo8nbc7bt" path="res://Assets/bedroom.01/0/door_a.obj" id="13_rb0xr"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iey3t"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vs4p2"]
 render_priority = 0
 shader = ExtResource("2_n1wfr")
 
@@ -24,13 +25,47 @@ size = Vector3(1.29534, 0.0175591, 1.00251)
 [sub_resource type="BoxShape3D" id="BoxShape3D_y6h48"]
 size = Vector3(0.661065, 0.0175591, 1.00251)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gro2w"]
-render_priority = 0
-shader = ExtResource("2_n1wfr")
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3xyh"]
+size = Vector3(0.42, 0.1, 0.22)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce2p4"]
-render_priority = 0
-shader = ExtResource("2_n1wfr")
+[sub_resource type="Animation" id="Animation_76bwp"]
+resource_name = "Dissolve"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bed:surface_material_override/0:shader_parameter/bias")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Walls:surface_material_override/0:shader_parameter/bias")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Commode:transparency")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_d4peg"]
 length = 0.001
@@ -57,6 +92,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bed:surface_material_override/0:shader_parameter/bias")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Walls:surface_material_override/0:shader_parameter/bias")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Commode:transparency")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_t3c40"]
@@ -123,6 +194,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rqwlk"]
 _data = {
+"Dissolve": SubResource("Animation_76bwp"),
 "RESET": SubResource("Animation_d4peg"),
 "close_door_a": SubResource("Animation_t3c40"),
 "close_door_b": SubResource("Animation_ej23s"),
@@ -134,38 +206,37 @@ _data = {
 size = Vector3(0.194858, 0.1, 0.193656)
 
 [node name="Home" type="Node3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("1_8flkr")
+
+[node name="Commode" type="MeshInstance3D" parent="."]
+lod_bias = 0.001
+mesh = ExtResource("4_54b6q")
+surface_material_override/0 = SubResource("ShaderMaterial_vs4p2")
 
 [node name="Bed" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_kj3lm")
-surface_material_override/0 = SubResource("ShaderMaterial_iey3t")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="Carpet" type="MeshInstance3D" parent="."]
 mesh = ExtResource("3_id20t")
-surface_material_override/0 = SubResource("ShaderMaterial_iey3t")
-
-[node name="Commode" type="MeshInstance3D" parent="."]
-mesh = ExtResource("4_54b6q")
-surface_material_override/0 = SubResource("ShaderMaterial_iey3t")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="Desk" type="MeshInstance3D" parent="."]
 mesh = ExtResource("5_ypn4x")
-surface_material_override/0 = SubResource("ShaderMaterial_iey3t")
-
-[node name="Doors" type="MeshInstance3D" parent="."]
-visible = false
-mesh = ExtResource("6_n3adg")
-surface_material_override/0 = SubResource("ShaderMaterial_iey3t")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="Frames" type="MeshInstance3D" parent="."]
 mesh = ExtResource("7_llgle")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="Shelf" type="MeshInstance3D" parent="."]
 mesh = ExtResource("8_4sujc")
-surface_material_override/0 = SubResource("ShaderMaterial_iey3t")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="Walls" type="MeshInstance3D" parent="."]
 mesh = ExtResource("9_8uywi")
+surface_material_override/0 = ExtResource("11_52e1o")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Walls"]
 
@@ -193,9 +264,13 @@ shape = SubResource("BoxShape3D_sy38h")
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.656016, 0.393365, 0.0033251)
 shape = SubResource("BoxShape3D_sy38h")
 
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="Walls/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419654, 0.0487016, 0)
+shape = SubResource("BoxShape3D_f3xyh")
+
 [node name="DoorFrames" type="MeshInstance3D" parent="."]
 mesh = ExtResource("11_fuqxq")
-surface_material_override/0 = SubResource("ShaderMaterial_gro2w")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="DoorBParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.646511, 0, 0.309489)
@@ -204,7 +279,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.646511, 0, 0.309489)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646511, 0, -0.344846)
 mesh = ExtResource("12_awk11")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_ce2p4")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="DoorAParent" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00527479, 0, 0.491713)
@@ -213,7 +288,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00527479, 0, 0.491713)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0327692, 0, -0.491713)
 mesh = ExtResource("13_rb0xr")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_ce2p4")
+surface_material_override/0 = ExtResource("3_y8mpa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

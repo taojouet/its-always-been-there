@@ -15,6 +15,6 @@ noise = SubResource("FastNoiseLite_kida7")
 [resource]
 render_priority = 0
 shader = ExtResource("1_aeut5")
-shader_parameter/bias = 0.5
+shader_parameter/bias = 0.0
 shader_parameter/noise = SubResource("NoiseTexture2D_truum")
 shader_parameter/albedo_texture = ExtResource("2_vsy8s")

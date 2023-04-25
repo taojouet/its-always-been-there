@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cirs4wepnipwc"
+path="res://.godot/imported/Log_New.obj-9a3056a24b3953e4a434d532a0c6d5d1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Log_New.obj-9a3056a24b3953e4a434d532a0c6d5d1.mesh"]
+
+source_file="res://Assets/Log/Log_New.obj"
+dest_files=["res://.godot/imported/Log_New.obj-9a3056a24b3953e4a434d532a0c6d5d1.mesh", "res://.godot/imported/Log_New.obj-9a3056a24b3953e4a434d532a0c6d5d1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

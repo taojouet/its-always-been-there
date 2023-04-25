@@ -22,6 +22,9 @@ func _ready():
 	create_platforms()	
 	$Slenderman.connect("slenderman_catch", death)
 	Events.connect("Door",openDoor)
+	await get_tree().create_timer(0.5).timeout
+	$Player.can_move = true
+	$Player.camera_locked = false
 	pass # Replace with function body.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -30,8 +33,8 @@ func _process(delta):
 	pass
 
 func openDoor():
-	await get_tree().create_timer(1.0).timeout
-	$Plateform/HomeStart/Idle.position = Vector3(0,0,-98)
+	await get_tree().create_timer(2.0).timeout
+	$Plateform/HomeStart/Idle.position = Vector3(1.25,0.133,4.5)
 	$Plateform/HomeStart/Idle.rotation_degrees.y += 180
 
 func movePlateform():
@@ -65,14 +68,26 @@ func create_platforms():
 			p.can_trigger = false
 
 func restart():
+	$Player.can_move = false
+	$Player.camera_locked = true
+	$Player.rotation_degrees.y = 180
+	$Slenderman.position.z -= 6
+	$Slenderman/Run/AnimationPlayer.stop(true)
+	$Player.slender_camera_catch()
+	await get_tree().create_timer(1.0).timeout
+	$Player.slender_camera_catch(true)
+	await create_tween().tween_property($Player,"position",player_start_pos,1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).finished
+#	await get_tree().create_timer(0.5).timeout
 	erase_platforms()
 	$Slenderman.activate(false)
+	$Slenderman/Run/AnimationPlayer.play("mixamocom")
 	$Slenderman.position = slenderman_start_pos
 #	$Player.position = player_start_pos
-	if $Player.rotation_degrees.y<160 or $Player.rotation_degrees.y>200:
-		create_tween().tween_property($Player,"rotation_degrees",Vector3(0,180,0),1.0).set_ease(Tween.EASE_IN)
-	await create_tween().tween_property($Player,"position",player_start_pos,1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).finished
+#	if $Player.rotation_degrees.y<160 or $Player.rotation_degrees.y>200:
+#		create_tween().tween_property($Player,"rotation_degrees",Vector3(0,180,0),1.0).set_ease(Tween.EASE_IN)
 	create_platforms()
+	$Player.can_move = true
+	$Player.camera_locked = false
 
 
 func _on_activate_slenderman_body_entered(body):
@@ -97,5 +112,7 @@ func end_platform_refresh():
 
 func end_level():
 	$Player.can_move = false
+#	$Player.camera_locked = true
 	await get_tree().create_timer(10.0).timeout
+	await create_tween().tween_property($Player,"position",Vector3(-6,165,0),2.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).finished
 	Events.emit_signal("end_slender")

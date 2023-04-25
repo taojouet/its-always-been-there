@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://534dxpj2wqup"]
+
+[ext_resource type="PackedScene" uid="uid://ctp4a0cp002hb" path="res://Assets/Character/basicCharacter.gltf" id="1_unh6i"]
+[ext_resource type="Material" uid="uid://66kkm5xd482w" path="res://Assets/Character/Cover_mat.tres" id="2_5t2cr"]
+[ext_resource type="Material" uid="uid://dud530bthn1wf" path="res://Assets/Character/playercharacter_mat.tres" id="3_1mppk"]
+
+[node name="basicCharacter" instance=ExtResource("1_unh6i")]
+
+[node name="Body1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5t2cr")
+
+[node name="Head1" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("3_1mppk")
+
+[node name="ArmLeft1" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_5t2cr")
+
+[node name="ArmRight1" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_5t2cr")
+
+[node name="LegLeft1" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_5t2cr")
+
+[node name="LegRight1" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_5t2cr")

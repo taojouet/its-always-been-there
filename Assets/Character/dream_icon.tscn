@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkqcdgqn6pj8q"]
+
+[ext_resource type="Texture2D" uid="uid://jpwh0m2cyi0w" path="res://Assets/Character/Dream_icon.png" id="1_q832n"]
+[ext_resource type="PackedScene" uid="uid://5hbumitsbfpw" path="res://Assets/Glass/Glass_OK.tscn" id="2_ce04b"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6v7ag"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6anp"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_q832n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nx2l7"]
+render_priority = 2
+blend_mode = 1
+depth_draw_mode = 2
+albedo_color = Color(1, 1, 1, 0.00392157)
+metallic_specular = 0.99
+roughness = 0.0
+emission_energy_multiplier = 11.87
+refraction_enabled = true
+detail_blend_mode = 3
+detail_uv_layer = 1
+
+[node name="Dream_icon" type="MeshInstance3D"]
+transform = Transform3D(-0.526225, -0.397559, -0.0251712, -0.00403066, 0.0470156, -0.658311, 0.398335, -0.524725, -0.0399139, -0.640315, 1.62804, 2.35604)
+mesh = SubResource("PlaneMesh_6v7ag")
+skeleton = NodePath("../../basicCharacter")
+surface_material_override/0 = SubResource("StandardMaterial3D_y6anp")
+
+[node name="GlassStl" parent="." instance=ExtResource("2_ce04b")]
+transform = Transform3D(0.660001, 6.55651e-07, 5.40167e-08, -1.78814e-07, -0.660001, 5.21541e-08, 1.86265e-08, -6.70552e-08, -0.660001, -0.227011, -0.0440481, -0.0505066)
+surface_material_override/0 = SubResource("StandardMaterial3D_nx2l7")
