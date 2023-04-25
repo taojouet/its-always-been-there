@@ -5,6 +5,105 @@
 [ext_resource type="PackedScene" uid="uid://534dxpj2wqup" path="res://Assets/Character/basic_character.tscn" id="3_vc88x"]
 [ext_resource type="PackedScene" uid="uid://5hbumitsbfpw" path="res://Assets/Glass/Glass_OK.tscn" id="4_25sls"]
 
+[sub_resource type="Animation" id="Animation_2yb1n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.49946, -1.65661, -0.0855982)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LegLeft1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LegRight1:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LegRight1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LegLeft1:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head1:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Camera3D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0888547, -3.14159, -7.78843e-09)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Text/MeshInstance3D:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_ga7qx"]
 resource_name = "Wake_up"
 length = 3.0
@@ -105,105 +204,6 @@ tracks/7/keys = {
 "values": [1.0, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_2yb1n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.49946, -1.65661, -0.0855982)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LegLeft1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("LegRight1:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("LegRight1:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("LegLeft1:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Head1:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../../Camera3D:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.0888547, -3.14159, -7.78843e-09)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../../Text/MeshInstance3D:transparency")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aglen"]
 _data = {
 "RESET": SubResource("Animation_2yb1n"),
@@ -258,12 +258,12 @@ spot_range = 15.502
 spot_angle = 85.7436
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.606061, 1.31623e-07, -1.53041e-06, -4.70164e-09, 0.60367, 0.0537805, 1.53605e-06, 0.0537805, -0.60367, -1.18326, 2.80299, -3.77591)
+transform = Transform3D(-0.606061, 1.31623e-07, -1.53041e-06, -4.70164e-09, 0.60367, 0.0537805, 1.53606e-06, 0.0537805, -0.60367, -1.18326, 2.80299, -3.77591)
 current = true
 fov = 80.0
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(-6.5058e-05, -0.149621, -0.0106514, -0.000913987, 0.0106515, -0.149619, 0.149997, 8.94068e-09, -0.000916303, -4.60617, 1.188, -0.08)
+transform = Transform3D(-6.48188e-05, -0.149621, -0.0106521, -0.000914044, 0.0106522, -0.149619, 0.149997, 2.54809e-07, -0.000916344, -4.60617, 1.188, -0.08)
 
 [node name="basicCharacter" parent="Node3D" instance=ExtResource("3_vc88x")]
 transform = Transform3D(1, -7.15134e-13, -9.31323e-10, -2.18492e-12, 1, -5.21445e-08, 0, 4.36857e-15, 1, -0.00350928, -8.06972, -0.574467)
@@ -272,19 +272,13 @@ transform = Transform3D(1, -7.15134e-13, -9.31323e-10, -2.18492e-12, 1, -5.21445
 transform = Transform3D(1, -1.78784e-13, -4.65661e-10, -2.77522e-12, 1, -1.48914e-08, 0, 1.09214e-15, 1, 0, 0, 0)
 
 [node name="Head1" parent="Node3D/basicCharacter" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, 0, 0)
 
 [node name="ArmLeft1" parent="Node3D/basicCharacter" index="2"]
 transform = Transform3D(1, -8.93918e-14, 0, -2.77522e-12, 1, -7.44079e-09, 0, 5.46072e-16, 1, 0, 0, 0)
 
 [node name="ArmRight1" parent="Node3D/basicCharacter" index="3"]
 transform = Transform3D(1, -8.93918e-14, 0, -2.77522e-12, 1, -7.44079e-09, 0, 5.46072e-16, 1, 0, 0, 0)
-
-[node name="LegLeft1" parent="Node3D/basicCharacter" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="LegRight1" parent="Node3D/basicCharacter" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D/basicCharacter"]
 libraries = {

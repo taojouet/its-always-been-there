@@ -11,6 +11,7 @@ func _ready():
 	
 	Events.connect("tuc_touched_player",restart_dropper)
 	Events.connect("player_touched_ground",next_scene)
+	$Timer.connect("timeout",lookatIce)
 	await get_tree().create_timer(0.5).timeout
 	$Player.can_move = true
 	$Player.camera_locked = false
@@ -31,8 +32,15 @@ func next_scene():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if win:
+		$Player/Neck/Camera3D.look_at($Map/Floor/Water/Icecube1Mesh.position)
 	pass
 
+func lookatIce():
+	$Player/basicCharacter2.visible=false
+	$Player/Neck/Camera3D.look_at($Map/Floor/Water/Icecube1Mesh.position)
+	await get_tree().create_timer(0.25).timeout
+	$Player/Neck/Camera3D.look_at($Map/Floor/Water/Icecube1Mesh.position)
 
 func _on_win_trigger_body_entered(body):
 	if !win and body is Player and body.Level == "Dropper":
@@ -42,7 +50,8 @@ func _on_win_trigger_body_entered(body):
 		$Mobs_Holder.destroy_tucs()
 		$Map/Floor/FloorCollision.disabled = true
 		$Map/InvisibleWalls/MeshInstance3D/StaticBody3D/Cup_Collision.disabled = true
-		$Player/Neck/Camera3D.look_at($Map/Floor/Water/Icecube1Mesh.position)
+#		$Timer.start()
+		lookatIce()
 		await create_tween().tween_property($Player,"position",Vector3(-100,42.0,2.0),2.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).finished
 		Events.emit_signal("end_dropper")
 	pass # Replace with function body.

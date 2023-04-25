@@ -2,14 +2,14 @@ extends Node3D
 
 @onready var mob_inst = preload("res://Scripts/Mobs/Mob.tscn")
 
-const NB_TUCS = 2000
+const NB_TUCS = 1500
 const BATCH_CD = 0.25
 
 var x_range = Vector2(-25,25)
 var y_range = Vector2(20,142)
 var z_range = Vector2(-25,25)
 var y_rota = Vector2(0, 180)
-var x_rota = Vector2(-10, 10)
+var x_rota = Vector2(-15, 15)
 
 var nb_batch = 150
 var spawned = 0
