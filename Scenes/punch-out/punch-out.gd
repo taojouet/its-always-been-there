@@ -10,7 +10,7 @@ func _ready():
 func start_game():
 	$HomeStart/Home.dissolve()
 	create_tween().tween_property($platform/Ring,"transparency",0.0,1.0)
-	await $HomeStart/Home.end_dissolve
+	await $HomeStart/Home.end_dissolve 
 	$Player.camera_locked = false
 	$tuc_spawner/Label.visible = true
 	$HomeStart.queue_free()
