@@ -231,6 +231,10 @@ shape = SubResource("BoxShape3D_wjbu5")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_34whk")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="body_entered" from="Map/Floor/WinTrigger" to="." method="_on_win_trigger_body_entered"]
 [connection signal="body_entered" from="HomeStart/Area3D" to="." method="_on_area_3d_body_entered"]
 
