@@ -13,7 +13,8 @@ config_version=5
 config/name="A Glass of Water"
 run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://Miscellanous/Splash.png"
+config/icon="res://Miscellanous/GameIcon.ico"
 
 [autoload]
 
