@@ -78,8 +78,8 @@ func restart():
 	$Player.slender_camera_catch()
 	$Heart_sound.position = $Slenderman.position
 	$Heart_sound.play()
-	$Slender_sound.position = $Slenderman.position
-	$Slender_sound.play()
+	$Slender_catch_sound.position = $Slenderman.position
+	$Slender_catch_sound.play()
 	await get_tree().create_timer(9.0).timeout
 	$Player.slender_camera_catch(true)
 	await create_tween().tween_property($Player,"position",player_start_pos,1.0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT).finished
@@ -98,6 +98,8 @@ func restart():
 
 func _on_activate_slenderman_body_entered(body):
 	if body is Player:
+		$Slender_start_run_sound.position = $ActivateSlenderman.position
+		$Slender_start_run_sound.play()
 		$Slenderman.activate(true)
 	pass # Replace with function body.
 
